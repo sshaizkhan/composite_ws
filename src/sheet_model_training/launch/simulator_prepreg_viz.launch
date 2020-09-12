@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<launch>
+<!-- ///////////////////User Input////////////////////////// -->
+<arg name="sheet_type" value="boeing"/>
+<arg name="configFilename" value="large_sheet10.config"/>
+<arg name="lightingFile" value="cloth.lighting"/>
+<!-- <arg name="debug_mode" value="1"/> -->
+<!-- //////////////////////////////////////////////////////////////// -->
+<arg name="configFilePath" value="$(find sheet_model_training)/config/$(arg sheet_type)/$(arg configFilename)"/>
+<arg name="lightingFilePath" value="$(find sheet_model_training)/lighting/$(arg lightingFile)"/>
+<!-- [Node: composite] initializes the simulator environment using specified configuration file -->
+<!-- <node name="simulator_from_file" pkg="composite_simulator" type="simulator_from_file" output="screen"/> -->
+
+<node name="simulator_prepreg_viz" pkg="sheet_model_training" type="simulator_prepreg_viz" args="$(arg sheet_type) $(arg configFilename) $(arg lightingFilePath)" output="screen"/>
+
+
+</launch>
+

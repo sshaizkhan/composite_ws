@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+<!-- ///////////////////User Input////////////////////////// -->
+<arg name="filename" value="sheet_test"/>
+<arg name="lightingFile" value="cloth.lighting"/>
+
+<!-- //////////////////////////////////////////////////////////////// -->
+<arg name="filePath" value="$(find composite_simulator)/config/$(arg filename).config"/>
+<arg name="lightingFilePath" value="$(find libvega)/include/libvega/VegaFEM-v4.0/models/cloth/$(arg lightingFile)"/>
+
+<!-- [Node: composite] initializes the simulator environment using specified configuration file -->
+<node name="simulator" pkg="composite_simulator" type="simulator" args="$(arg filePath) $(arg lightingFilePath)" output="screen"/>
+
+
+</launch>
+

@@ -1,0 +1,11 @@
+string rob_name
+gen_utilities/Waypoints wp 
+geometry_msgs/Pose rob_transform
+geometry_msgs/Pose tool_tcp_transform
+
+---
+
+gen_utilities/Waypoints grasp_waypoints_seq
+gen_utilities/KukaJointAnglesSet grasp_joint_angles_seq
+gen_utilities/IdxGroup[] grasp_group_idx
+gen_utilities/IdxGroup[] interp_grasp_group_idx

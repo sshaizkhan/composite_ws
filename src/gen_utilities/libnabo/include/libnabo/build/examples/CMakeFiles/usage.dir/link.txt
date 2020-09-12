@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -O3 -DNDEBUG   CMakeFiles/usage.dir/usage.cpp.o  -o usage -rdynamic ../libnabo.a -lgomp 

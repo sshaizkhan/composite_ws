@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<launch>
+<!-- ///////////////////User Input////////////////////////// -->
+<arg name="configFilename" value="sheet_tracking_FEM.config"/>
+<arg name="lightingFile" value="cloth.lighting"/>
+<arg name="meshFilename" value="mesh4_1.obj"/>
+<arg name="dataFilename" value="robot_data/new_center_grip4_curve_1.csv"/>
+<!-- //////////////////////////////////////////////////////////////// -->
+<arg name="configFilePath" value="$(find composite_simulator)/config/$(arg configFilename)"/>
+<arg name="lightingFilePath" value="$(find composite_simulator)/lighting/$(arg lightingFile)"/>
+<arg name="meshFilePath" value="$(find composite_simulator)/mesh/$(arg meshFilename)"/>
+<arg name="dataFilePath" value="$(find composite_simulator)/data/$(arg dataFilename)"/>
+
+<node name="simulator_constraint_test" pkg="composite_simulator" type="simulator_constraint_test" args="$(arg configFilePath) $(arg lightingFilePath) $(arg meshFilePath) $(arg dataFilePath)" output="screen"/>
+
+
+
+</launch>
+

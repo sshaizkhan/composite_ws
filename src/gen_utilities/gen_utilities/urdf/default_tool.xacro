@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot name="mesh">
+  <link name="mesh_origin">
+    <visual>
+      	<geometry>
+          	<mesh filename="package://gen_utilities/meshes/tools/!@qzmpwxno@!.stl"
+                scale="1 1 1"/>
+      	</geometry>
+	  	<material name="ABS" >
+          	<color rgba="0.5 0.5 0.5 1.0" />
+         </material> 	
+    	</visual>
+  </link>
+</robot>

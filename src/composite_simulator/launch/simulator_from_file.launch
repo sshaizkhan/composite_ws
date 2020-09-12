@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<launch>
+<!-- ///////////////////User Input////////////////////////// -->
+<arg name="configFilename" value="sheet_tracking.config"/>
+<arg name="lightingFile" value="cloth.lighting"/>
+<!-- <arg name="meshFilename" value="out1.obj"/> -->
+<arg name="meshFilename" value="mesh4_1.obj"/>
+<!-- <arg name="dataFilename" value="robot_data/new_fix1.csv"/> -->
+<arg name="dataFilename" value="robot_data/new_center_grip4_curve_1.csv"/>
+
+<!-- //////////////////////////////////////////////////////////////// -->
+<arg name="configFilePath" value="$(find composite_simulator)/config/$(arg configFilename)"/>
+<arg name="lightingFilePath" value="$(find composite_simulator)/lighting/$(arg lightingFile)"/>
+<arg name="meshFilePath" value="$(find composite_simulator)/mesh/$(arg meshFilename)"/>
+<arg name="dataFilePath" value="$(find composite_simulator)/data/$(arg dataFilename)"/>
+<!-- [Node: composite] initializes the simulator environment using specified configuration file -->
+<!-- <node name="simulator_from_file" pkg="composite_simulator" type="simulator_from_file" output="screen"/> -->
+
+<node name="simulator_from_file" pkg="composite_simulator" type="simulator_from_file" args="$(arg configFilePath) $(arg lightingFilePath) $(arg meshFilePath) $(arg dataFilePath)" output="screen"/>
+
+</launch>
+

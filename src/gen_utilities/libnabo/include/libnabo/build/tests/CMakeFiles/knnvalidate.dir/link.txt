@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -O3 -DNDEBUG   CMakeFiles/knnvalidate.dir/knnvalidate.cpp.o  -o knnvalidate -rdynamic ../libnabo.a -lgomp 

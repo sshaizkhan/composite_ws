@@ -1,0 +1,2 @@
+/usr/bin/ar qc libnabo.a  CMakeFiles/nabo.dir/nabo/nabo.cpp.o CMakeFiles/nabo.dir/nabo/brute_force_cpu.cpp.o CMakeFiles/nabo.dir/nabo/kdtree_cpu.cpp.o CMakeFiles/nabo.dir/nabo/kdtree_opencl.cpp.o
+/usr/bin/ranlib libnabo.a

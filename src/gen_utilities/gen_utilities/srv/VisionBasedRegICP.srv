@@ -1,0 +1,9 @@
+sensor_msgs/PointCloud part_ptcloud
+sensor_msgs/PointCloud scan_ptcloud
+sensor_msgs/PointCloud selected_part_pts
+sensor_msgs/PointCloud selected_scan_pts
+string scope
+
+---
+
+geometry_msgs/Pose transform_mat

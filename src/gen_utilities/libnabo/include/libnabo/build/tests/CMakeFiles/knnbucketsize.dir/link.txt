@@ -1,0 +1,1 @@
+/usr/bin/c++    -fopenmp -O3 -DNDEBUG   CMakeFiles/knnbucketsize.dir/knnbucketsize.cpp.o  -o knnbucketsize -rdynamic ../libnabo.a -lgomp 

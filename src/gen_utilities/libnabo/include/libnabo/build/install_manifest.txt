@@ -1,0 +1,7 @@
+/usr/local/lib/libnabo.a
+/usr/local/include/nabo/nabo.h
+/usr/local/include/nabo/third_party/any.hpp
+/usr/local/share/doc/libnabo/README.md
+/usr/local/share/libnabo/package.xml
+/usr/local/share/libnabo/cmake/libnaboConfig.cmake
+/usr/local/share/libnabo/cmake/libnaboConfigVersion.cmake

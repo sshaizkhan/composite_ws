@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot name="table">
+  <link name="table_legs_origin">
+    <visual>
+      	<geometry>
+          	<mesh filename="package://gen_utilities/meshes/table/table_legs.stl"
+                scale="1 1 1"/>
+      	</geometry>
+	  	<material name="ABS" >
+          	<color rgba="0.3 0.3 0.3 1.0" />
+         </material> 	
+    	</visual>
+  </link>
+</robot>

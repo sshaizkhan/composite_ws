@@ -1,0 +1,15 @@
+# status
+string status
+
+# tool name
+string tool_name
+
+# joint angles for kuka
+gen_utilities/KukaJointAnglesSet J
+
+# waypoints information  
+gen_utilities/Waypoints WP
+
+---
+
+string status

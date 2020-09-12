@@ -1,0 +1,13 @@
+gen_utilities/Waypoints wp 
+geometry_msgs/Pose part_transform_mat
+geometry_msgs/Pose tool_tcp_transform
+gen_utilities/IdxGroup[] group_idx
+int32 override_joint_config
+string override_joint_config_file
+
+---
+
+gen_utilities/Waypoints draping_wp  
+gen_utilities/Waypoints drape_waypoints_seq
+gen_utilities/KukaJointAnglesSet drape_joint_angles_seq
+gen_utilities/IdxGroup[] drape_group_idx

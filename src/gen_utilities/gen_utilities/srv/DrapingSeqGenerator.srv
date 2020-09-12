@@ -1,0 +1,5 @@
+std_msgs/String mold_name
+
+---
+
+std_msgs/String drape_seq_data

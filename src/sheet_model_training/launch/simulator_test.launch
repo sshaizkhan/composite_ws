@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<launch>
+<!-- ///////////////////User Input////////////////////////// -->
+<arg name="configFilename" value="sheet_tracking_FEM.config"/>
+<arg name="lightingFile" value="cloth.lighting"/>
+<arg name="meshFilename" value="Surface_24576_offset244D.obj"/>
+<!-- <arg name="dataFilename" value="grip5_5.csv"/> -->
+<arg name="dataFilename" value=" "/>
+<!-- <arg name="compareFilename" value="boeing/rot_shift_new_center_grip5_curve_5.csv"/> -->
+<arg name="compareFilename" value=" "/>
+<!-- //////////////////////////////////////////////////////////////// -->
+<arg name="configFilePath" value="$(find composite_simulator)/config/$(arg configFilename)"/>
+<arg name="lightingFilePath" value="$(find composite_simulator)/lighting/$(arg lightingFile)"/>
+<arg name="meshFilePath" value="$(find sheet_model_training)/mesh/$(arg meshFilename)"/>
+<arg name="dataFilePath" value="$(find sheet_model_training)/data/$(arg dataFilename)"/>
+<arg name="compareFilePath" value="$(find sheet_model_training)/data/$(arg compareFilename)"/>
+<node name="simulator_test" pkg="sheet_model_training" type="simulator_test" args="$(arg configFilePath) $(arg lightingFilePath) $(arg meshFilePath) $(arg dataFilePath) $(arg compareFilePath)" output="screen"/>
+
+
+
+</launch>
+
