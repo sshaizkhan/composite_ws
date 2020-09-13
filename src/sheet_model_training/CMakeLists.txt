@@ -25,7 +25,7 @@ find_package(catkin REQUIRED COMPONENTS
 set(TBB_INCLUDE /opt/intel/compilers_and_libraries_2020/linux/tbb/include)
 set(TBB_LIBRARIES "-ltbb -L/opt/intel/compilers_and_libraries_2020/linux/tbb/lib/intel64/gcc4.8")
 #########Pardiso##############
-set(PARDISO_DIR /opt/intel/compilers_and_libraries_2020/linux/mkl)
+set(PARDISO_DIR /opt/intel/compilers_and_libraries_2020.3.279/linux/mkl)
 set(PARDISO_INCLUDE "-m64 -I${PARDISO_DIR}/include")
 set(PARDISO_LIBRARIES "-L${PARDISO_DIR}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_tbb_thread -lmkl_core -ltbb -lstdc++ -lpthread -lm -ldl")
 set(LD_LIBRARY_PATH "-Wl,-rpath ${PARDISO_DIR}/lib/intel64"
