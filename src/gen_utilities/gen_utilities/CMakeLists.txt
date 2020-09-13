@@ -19,9 +19,9 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(libnlopt REQUIRED COMPONENTS)
 
 # Adding nlopt header file and linking dependancies 
-include_directories(${libnlopt_SOURCE_DIR}/install/include)
-link_directories(${libnlopt_SOURCE_DIR}/install/lib)
-set(nlopt_ADDED_LIBS ${libnlopt_SOURCE_DIR}/install/lib/libnlopt.so)
+include_directories(${libnlopt_SOURCE_DIR}/include)
+link_directories(${libnlopt_SOURCE_DIR}/lib)
+set(nlopt_ADDED_LIBS ${libnlopt_SOURCE_DIR}/lib/libnlopt.so)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
