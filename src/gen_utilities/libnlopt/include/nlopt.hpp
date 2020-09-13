@@ -97,7 +97,8 @@ namespace nlopt {
     FTOL_REACHED = 3,
     XTOL_REACHED = 4,
     MAXEVAL_REACHED = 5,
-    MAXTIME_REACHED = 6
+    MAXTIME_REACHED = 6,
+    NUM_RESULTS           /* not a result, just the number of them */
   };
   //////////////////////////////////////////////////////////////////////
   typedef nlopt_func func; // nlopt::func synoynm
@@ -253,6 +254,17 @@ namespace nlopt {
       xtmp(0), gradtmp(0), gradtmp0(0),
       last_result(nlopt::FAILURE), last_optf(HUGE_VAL),
       forced_stop_reason(NLOPT_FORCED_STOP) {
+      if (!o) throw std::bad_alloc();
+      nlopt_set_munge(o, free_myfunc_data, dup_myfunc_data);
+    }
+    opt(const char * algo_str, unsigned n) :
+      o(NULL), xtmp(0), gradtmp(0), gradtmp0(0),
+      last_result(nlopt::FAILURE), last_optf(HUGE_VAL),
+      forced_stop_reason(NLOPT_FORCED_STOP) {
+      const nlopt_algorithm a = nlopt_algorithm_from_string(algo_str);
+      if (a < 0)
+        throw std::invalid_argument("wrong algorithm string");
+      o = nlopt_create(a, n);
       if (!o) throw std::bad_alloc();
       nlopt_set_munge(o, free_myfunc_data, dup_myfunc_data);
     }
@@ -487,6 +499,7 @@ namespace nlopt {
     NLOPT_GETSET(double, ftol_abs)
     NLOPT_GETSET(double, xtol_rel)
     NLOPT_GETSET_VEC(xtol_abs)
+    NLOPT_GETSET_VEC(x_weights)
     NLOPT_GETSET(int, maxeval)
     int get_numevals() const {
       if (!o) throw std::runtime_error("uninitialized nlopt::opt");
