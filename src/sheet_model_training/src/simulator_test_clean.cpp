@@ -423,11 +423,11 @@ void get_err(int fixNumber)
   // }
 
   std::vector<std::string> training_data(5);
-  training_data[0]= "/home/composite-cell2/Desktop/Alec_Workspace/composite_ws_082020/composite_ws/src/sheet_model_training/data/AlecZach/T1S1.txt";
-  training_data[1]= "/home/composite-cell2/Desktop/Alec_Workspace/composite_ws_082020/composite_ws/src/sheet_model_training/data/AlecZach/T1S2.txt";
-  training_data[2]= "/home/composite-cell2/Desktop/Alec_Workspace/composite_ws_082020/composite_ws/src/sheet_model_training/data/AlecZach/T1S3.txt";
-  training_data[3]= "/home/composite-cell2/Desktop/Alec_Workspace/composite_ws_082020/composite_ws/src/sheet_model_training/data/AlecZach/T1S4.txt";
-  training_data[4]= "/home/composite-cell2/Desktop/Alec_Workspace/composite_ws_082020/composite_ws/src/sheet_model_training/data/AlecZach/T1S5.txt";
+  training_data[0]= "/home/shah/composite_ws/src/sheet_model_training/data/AlecZach/T1S1.txt";
+  training_data[1]= "/home/shah/composite_ws/src/sheet_model_training/data/AlecZach/T1S2.txt";
+  training_data[2]= "/home/shah/composite_ws/src/sheet_model_training/data/AlecZach/T1S3.txt";
+  training_data[3]= "/home/shah/composite_ws/src/sheet_model_training/data/AlecZach/T1S4.txt";
+  training_data[4]= "/home/shah/composite_ws/src/sheet_model_training/data/AlecZach/T1S5.txt";
   // cout << 'training_data:' << training_data[fixNum] << endl; 
   // Vec3d offset;
   if(m_training_marker.size() != 0){
