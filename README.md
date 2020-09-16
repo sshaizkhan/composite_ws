@@ -55,7 +55,7 @@ Run the below commands in terminal inside your cloned nlopt librart
 mkdir build
 cd build
 ```
-By default, this installs the NLopt shared library (libnlopt.so) in /usr/local/lib and the NLopt header file (nlopt.h) in /usr/local/include, as well manual pages and a few other files. Since, we do not want this to happen as our [CMakeLists.txt]!(https://ibb.co/mtmrj0H)  located at */home/your_project_name/src/gen_utilities/gen_utilities* have different and if you want to keep that path, you need to install nlopt library to that path. Follow the script below to install to that path while you are still inside **build** folder created in the above steps:
+By default, this installs the NLopt shared library (libnlopt.so) in /usr/local/lib and the NLopt header file (nlopt.h) in /usr/local/include, as well manual pages and a few other files. Since, we do not want this to happen as our ![CMakeLists.txt](https://ibb.co/5Ln5ChW)  located at */home/your_project_name/src/gen_utilities/gen_utilities* have different and if you want to keep that path, you need to install nlopt library to that path. Follow the script below to install to that path while you are still inside **build** folder created in the above steps:
 
 ```shell
 cmake -DCMAKE_INSTALL_PREFIX=$/home/user_PC_name/your_project_name/src/gen_utilities/libnlopt/install ..
@@ -69,13 +69,38 @@ Now, you can see *include*, *lib* and *share* folder inside your **install** fol
 
 ### More Editing before building
 
-Before you dive into running *catkin_make*, you still have to make some changes to *CMakeLists.txt* into different projects under src folder. View this ![image](https://ibb.co/tZ7RMzd) to know which folder contain the CMakeLists to make changes.
+Before you dive into running *catkin_make*, you still have to make some changes to *CMakeLists.txt* into different projects under src folder. View this ![image](https://ibb.co/tZ7RMzd) to know which folder contain the *CMakeLists* to make changes. Make sure that **opt** folder looks like [this](https://ibb.co/5Ln5ChW). If your folder only have *compilers_and_libraries_2020*, then you don't have to make changes to *CMakeLists*. Proceed only if your installed [intel](https://ibb.co/Kqfpfm9) library looks like the image shown above. You can find your intel library under [opt](https://ibb.co/mHGwdQ1) located under [Other Locations/Computer](https://ibb.co/Rv9hTgx) in Ubuntu 18.04 or higher.
+
+**So what to change**
+Change the path for *MKL* library in all three *CMakeLists* under src folder shown above.
+
+**Previous line**
 
 ```shell
-./configure
-make
-make install
+set(PARDISO_DIR /opt/intel/compilers_and_libraries_2020/linux/mkl)
 ```
+
+Change the above line to new line below:
+
+```shell
+set(PARDISO_DIR /opt/intel/compilers_and_libraries_2020.3.279/linux/mkl)
+```
+**Note :** Chnage the path to this {compilers_and_libraries_2020.3.279} or whichever folder that contain under path */inter/compilers_and_libraries_2020.3.xxx/linux/mkl*. Also, change the path for TBB if you think that your TBB is not under the specified path.
+
+### Building
+
+Now you have installed all the necessary files and made necessary changes to all CMakeLists.txt files, you are ready to build your project.
+
+
+```shell
+cd your_project_name
+catkin_make
+```
+And if everything has been done as mentioned above, you should see the following in your terminal
+
+![Result](https://ibb.co/sQ01g0q)
+
+
 
 Here again you should state what actually happens when the code above gets
 executed.
