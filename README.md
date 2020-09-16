@@ -31,7 +31,7 @@ Alternatively try to use this [link](https://registrationcenter.intel.com/en/pro
 **Note :** Make sure not to delete *CMakeLists.txt* and *package.xml* files inside your **libnlopt** folder, otherwise you'll face config file error while runnnig *catkin_make* command.
 
 
-## Installing the above downloaded libraries
+## Installing libraries
 
 Once you have downloaded all the libraries mentioned above, you are set to install them in your system. Follow the instructions below to download each library:
 
@@ -67,9 +67,9 @@ Now, you can see *include*, *lib* and *share* folder inside your **install** fol
 **Note :** Change *user_PC_name* to your system name and *your_project_name* to name of your project repository.
 
 
-### More Editing before building
+### Major Changes to CMakeLists Files
 
-Before you dive into running *catkin_make*, you still have to make some changes to *CMakeLists.txt* into different projects under src folder. View this ![image](https://ibb.co/tZ7RMzd) to know which folder contain the *CMakeLists* to make changes. Make sure that **opt** folder looks like [this](https://ibb.co/5Ln5ChW). If your folder only have *compilers_and_libraries_2020*, then you don't have to make changes to *CMakeLists*. Proceed only if your installed [intel](https://ibb.co/Kqfpfm9) library looks like the image shown above. You can find your intel library under [opt](https://ibb.co/mHGwdQ1) located under [Other Locations/Computer](https://ibb.co/Rv9hTgx) in Ubuntu 18.04 or higher.
+Before you dive into running *catkin_make*, you still have to make some changes to *CMakeLists.txt* into different projects under src folder. View this ![image](https://ibb.co/tZ7RMzd) to know which folder contain the *CMakeLists* to make changes. Make sure that **opt** folder looks like [this](https://ibb.co/5Ln5ChW). If your folder only have *compilers_and_libraries_2020*, then you don't have to make changes to *CMakeLists*. Proceed only if your installed ![intel](https://1y6auq.by.files.1drv.com/y4mKBY8DSRDdOzLkj8EddCFZ15CakEwgV6MBVPpyP8j1NfpypwK384XHXj5Z-gC7QaXp5R_y2fSdVgS7fLFbR7sVtI6wD56UmZdTL02GruviDSt_z9EYSxLotp6ptVP5iMJpkGU8IXEKKyV3XzCWOnVcd7PvQuG2ijwztG4PbinPa-EC1TwPxHKAhKREn4rC-ExKTTyY7Xx5qlKtHH0KNr2fQ?width=890&height=567&cropmode=none) library looks like the image shown above. You can find your intel library under [opt](https://ibb.co/mHGwdQ1) located under [Other Locations/Computer](https://ibb.co/Rv9hTgx) in Ubuntu 18.04 or higher.
 
 **So what to change**
 Change the path for *MKL* library in all three *CMakeLists* under src folder shown above.
@@ -87,7 +87,7 @@ set(PARDISO_DIR /opt/intel/compilers_and_libraries_2020.3.279/linux/mkl)
 ```
 **Note :** Chnage the path to this {compilers_and_libraries_2020.3.279} or whichever folder that contain under path */inter/compilers_and_libraries_2020.3.xxx/linux/mkl*. Also, change the path for TBB if you think that your TBB is not under the specified path.
 
-### Building
+### Building and Running
 
 Now you have installed all the necessary files and made necessary changes to all CMakeLists.txt files, you are ready to build your project.
 
@@ -100,19 +100,13 @@ And if everything has been done as mentioned above, you should see the following
 
 ![Result](https://ibb.co/sQ01g0q)
 
-
-
-Here again you should state what actually happens when the code above gets
-executed.
-
-### Deploying / Publishing
-
-In case there's some step you have to take that publishes this project to a
-server, this is the right time to state it.
+Now, run the followinf command to see the simulation and various results on Terminal
 
 ```shell
-packagemanager deploy awesome-project -s server.com -u username -p password
+cd your_project_name
+source devel/setup.bash
+roslaunch sheet_model_training simulator_test_clean.launch
 ```
 
-And again you'd need to tell what the previous code actually does.
 
+HAPPY DEBUGGING & CODING
