@@ -55,7 +55,9 @@ Run the below commands in terminal inside your cloned nlopt librart
 mkdir build
 cd build
 ```
-By default, this installs the NLopt shared library (libnlopt.so) in /usr/local/lib and the NLopt header file (nlopt.h) in /usr/local/include, as well manual pages and a few other files. Since, we do not want this to happen as our ![CMakeLists.txt](https://ibb.co/5Ln5ChW)  located at */home/your_project_name/src/gen_utilities/gen_utilities* have different and if you want to keep that path, you need to install nlopt library to that path. Follow the script below to install to that path while you are still inside **build** folder created in the above steps:
+By default, this installs the NLopt shared library (libnlopt.so) in /usr/local/lib and the NLopt header file (nlopt.h) in /usr/local/include, as well manual pages and a few other files. Since, you do not want this to happen as your default CMakeList located at */home/your_project_name/src/gen_utilities/gen_utilities* have different and if you want to keep that path, you need to install nlopt library to that path. 
+![CMakeLists.txt](https://0i6auq.by.files.1drv.com/y4mVdNbCYS-_Vx-RLfCH2Xcd4_xVcsAS8uM9P4faGAYfPyQvRQu3Gke83o4O0tpLLB6XYe7vsmXp9ktKRA75PgzD1C56spakoJ7ySO5bQEmF8RYA0PYngNx8Y2e3soOfuM7WPcgvDuOGmFb2C2j6Tqr_gUfb9XiM1dMeNZmihX48GU5jenbnHknOQzgiWO3GKEfLEHRAHIRArEw7otEbqRjsA?width=900&height=742&cropmode=none)  
+Follow the script below to install to that path while you are still inside **build** folder created in the above steps:
 
 ```shell
 cmake -DCMAKE_INSTALL_PREFIX=$/home/user_PC_name/your_project_name/src/gen_utilities/libnlopt/install ..
@@ -69,22 +71,32 @@ Now, you can see *include*, *lib* and *share* folder inside your **install** fol
 
 ### Major Changes to CMakeLists Files
 
-Before you dive into running *catkin_make*, you still have to make some changes to *CMakeLists.txt* into different projects under src folder. View this ![image](https://ibb.co/tZ7RMzd) to know which folder contain the *CMakeLists* to make changes. Make sure that **opt** folder looks like [this](https://ibb.co/5Ln5ChW). If your folder only have *compilers_and_libraries_2020*, then you don't have to make changes to *CMakeLists*. Proceed only if your installed ![intel](https://1y6auq.by.files.1drv.com/y4mKBY8DSRDdOzLkj8EddCFZ15CakEwgV6MBVPpyP8j1NfpypwK384XHXj5Z-gC7QaXp5R_y2fSdVgS7fLFbR7sVtI6wD56UmZdTL02GruviDSt_z9EYSxLotp6ptVP5iMJpkGU8IXEKKyV3XzCWOnVcd7PvQuG2ijwztG4PbinPa-EC1TwPxHKAhKREn4rC-ExKTTyY7Xx5qlKtHH0KNr2fQ?width=890&height=567&cropmode=none) library looks like the image shown above. You can find your intel library under [opt](https://ibb.co/mHGwdQ1) located under [Other Locations/Computer](https://ibb.co/Rv9hTgx) in Ubuntu 18.04 or higher.
+Before you dive into running *catkin_make*, you still have to make some changes to *CMakeLists.txt* into different projects under src folder as hshown in the image below.
+![Image](https://obowrw.by.files.1drv.com/y4mkEgDKY9zO6QhZ7jNrBDpIikG1wvqrYtxe8mqcbeSacHR1oJIAOu-D_5uTOdN47OI03-hO4YdQGlWFp_8_8_f0Idgv3deVpELLISLg2cgdf5wWWgxCCrwIOBkc0c0JtBrpl3BnGGepKCCQ9U3xQq4nx-_gG8cf0jSBxRPJKR9Jqg5AlFtO5VwtP64Im3ma3bxPTgG43bDxd3ZonY6uJjB5w?width=890&height=566&cropmode=none)
+
+Confirm that your **opt** folder looks like this:
+![this](https://1o6auq.by.files.1drv.com/y4mN8d52-SVpP0-rjLiIvOT1ked8RTUhbLBSa91N-alEaS3bkKLXPv0YvBgOX5iZNpipsrEU1UNUlYnN5Ca5_O-OKjUIDeZYx50wsTnbTNzhAsgO0mxLg9_a8sio6SQ3IA1pGnDFgLlor9ejWF0kjZtPNLAHWp4lVzg5aE25bcmoQP61T2oC5Ww_COW1iL_BDc28Eg896xvAsyuWdM6pnDRag?width=890&height=567&cropmode=none). 
+
+If your folder only have *compilers_and_libraries_2020*, then you don't have to make changes to *CMakeLists*. Proceed only if your installed intel ibrary looks like the image shown below![intel](https://1y6auq.by.files.1drv.com/y4mKBY8DSRDdOzLkj8EddCFZ15CakEwgV6MBVPpyP8j1NfpypwK384XHXj5Z-gC7QaXp5R_y2fSdVgS7fLFbR7sVtI6wD56UmZdTL02GruviDSt_z9EYSxLotp6ptVP5iMJpkGU8IXEKKyV3XzCWOnVcd7PvQuG2ijwztG4PbinPa-EC1TwPxHKAhKREn4rC-ExKTTyY7Xx5qlKtHH0KNr2fQ?width=890&height=567&cropmode=none) You can find your intel library under [opt](https://ibb.co/mHGwdQ1) located under [Other Locations/Computer](https://ibb.co/Rv9hTgx) in Ubuntu 18.04 or higher.
 
 **So what to change**
 Change the path for *MKL* library in all three *CMakeLists* under src folder shown above.
 
 **Previous line**
 
+
 ```shell
 set(PARDISO_DIR /opt/intel/compilers_and_libraries_2020/linux/mkl)
 ```
 
-Change the above line to new line below:
+![Old Image](https://nhowrw.by.files.1drv.com/y4meQO75m1gQe-6vXNa_VcfztzXDIe0M0y8KX_CcAclryJa5vtvjImjBqmVwtRWrabidxQJhh0i1aY4KzgqtMu1aZoJPqTnozqWJuOvhsvY7vT0wfqqAE466oyghuMYxYi-cY6ZdUQNPMwIfsY00ew6Swucq63MJ3EUmlH_x_Ld7lZR3V32lP9hdRd9M6u3WM5tC8E4l3Fhmd5UzCYktN5v4g?width=900&height=742&cropmode=none)
+
 
 ```shell
 set(PARDISO_DIR /opt/intel/compilers_and_libraries_2020.3.279/linux/mkl)
 ```
+![New Image](https://nxowrw.by.files.1drv.com/y4mtXQhoCS88QjA1k_Wdif2TDEd8R2EE19VaHOE9hTL1XJ1ALchT-M5Dsz4G6wOWv5aHaPDr8EGx9hm-PHD85Jj0vQ8uaJLmYOvO-31IZJd0wo4yS-oF4Vhbd6NSfmI9wcG1ctz1otHL6_MW5sWrr_iOjQVnXHxgkw1RmdeygDhq_g_5EPuyZxnjjB96F8F0TTIil23kLUMCHVZWlOAGNxsig?width=900&height=742&cropmode=none)
+
 **Note :** Chnage the path to this {compilers_and_libraries_2020.3.279} or whichever folder that contain under path */inter/compilers_and_libraries_2020.3.xxx/linux/mkl*. Also, change the path for TBB if you think that your TBB is not under the specified path.
 
 ### Building and Running
@@ -98,7 +110,7 @@ catkin_make
 ```
 And if everything has been done as mentioned above, you should see the following in your terminal
 
-![Result](https://ibb.co/sQ01g0q)
+![Result](https://0y6auq.by.files.1drv.com/y4mWUtbwNmDKWphimAAm_v1YC_y9bXK26opEc5O4L897XS815333JUvSIcYaPPOJ2KvLdj7B9rCnHC01n_xuRApa0p65whDcN32FDJoelQONhE22qRVJgaku5Tv0qtsFconwwtmDSNB3u4tfX1svNmXIbRZM2M_EEy-0sk1H5sxkFeS5gq3WHman0q-U1FfWETMuBLztd2CzxTdWxeMrvQNYg?width=734&height=488&cropmode=none)
 
 Now, run the followinf command to see the simulation and various results on Terminal
 
@@ -107,6 +119,8 @@ cd your_project_name
 source devel/setup.bash
 roslaunch sheet_model_training simulator_test_clean.launch
 ```
+![Terminal](https://nrowrw.by.files.1drv.com/y4mAQIAFPqHy3bTOLYyT-yrw28_ASRpnsC_03Qasp3CuAAjSqD3IAO3MMPJBTe8sRC_8aEr75IHldO3LRqbhYvvLIFKUFtZ4E1xa0c3EtT7V9MwXgGl81MeVakh3Sc2V1aekkUW6gFQT_hx3wKy8M8RvuWJPm0HooyO8iADyH1svfiW_NVWO1MUTi8lu1mVJTyBTFqI-8LRLuobMvZjCjpuDA?width=644&height=938&cropmode=none)
 
+![Simulator](https://pbowrw.by.files.1drv.com/y4mvuFpqq7jrDwSPrZUwx3B134gAQIkUKXBdcGyDQmmrxh4QM7uG68tPcxLHa1SPyzBAay7O87XhyZprVO9bqLqIdrwEe0PvEh_DeL_cbPC-YzNE62SJKGsAnHTaLQciCiJ7eV_50mfZ3GsK__5Ws4v9MGblwgGbmtnl41gNKt4T9YVnl2xSkova6rVg8FD-rQjTwC5Mf_6mcciOWSO8oNTiA?width=800&height=630&cropmode=none)
 
 HAPPY DEBUGGING & CODING
