@@ -1,3 +1,6 @@
+# Maintainer: Shahwaz Khan
+
+
 ![Logo of the project](https://viterbischool.usc.edu/wp-content/uploads/2017/08/USC-Viterbi-School-of-Engineering.png)
 
 # Composite Sheet Layup
