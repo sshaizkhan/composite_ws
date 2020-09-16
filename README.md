@@ -56,7 +56,7 @@ mkdir build
 cd build
 ```
 By default, this installs the NLopt shared library (libnlopt.so) in /usr/local/lib and the NLopt header file (nlopt.h) in /usr/local/include, as well manual pages and a few other files. Since, you do not want this to happen as your default CMakeList located at */home/your_project_name/src/gen_utilities/gen_utilities* have different and if you want to keep that path, you need to install nlopt library to that path. 
-![CMakeLists.txt](https://0i6auq.by.files.1drv.com/y4mVdNbCYS-_Vx-RLfCH2Xcd4_xVcsAS8uM9P4faGAYfPyQvRQu3Gke83o4O0tpLLB6XYe7vsmXp9ktKRA75PgzD1C56spakoJ7ySO5bQEmF8RYA0PYngNx8Y2e3soOfuM7WPcgvDuOGmFb2C2j6Tqr_gUfb9XiM1dMeNZmihX48GU5jenbnHknOQzgiWO3GKEfLEHRAHIRArEw7otEbqRjsA?width=900&height=742&cropmode=none)  
+![CMakeLists.txt](https://drive.google.com/file/d/1zfkT7jHaFDoqtgIIGejXcnZNrzTDKlxx/view?usp=sharing)  
 Follow the script below to install to that path while you are still inside **build** folder created in the above steps:
 
 ```shell
@@ -77,7 +77,8 @@ Before you dive into running *catkin_make*, you still have to make some changes 
 Confirm that your **opt** folder looks like this:
 ![this](https://1o6auq.by.files.1drv.com/y4mN8d52-SVpP0-rjLiIvOT1ked8RTUhbLBSa91N-alEaS3bkKLXPv0YvBgOX5iZNpipsrEU1UNUlYnN5Ca5_O-OKjUIDeZYx50wsTnbTNzhAsgO0mxLg9_a8sio6SQ3IA1pGnDFgLlor9ejWF0kjZtPNLAHWp4lVzg5aE25bcmoQP61T2oC5Ww_COW1iL_BDc28Eg896xvAsyuWdM6pnDRag?width=890&height=567&cropmode=none). 
 
-If your folder only have *compilers_and_libraries_2020*, then you don't have to make changes to *CMakeLists*. Proceed only if your installed intel ibrary looks like the image shown below![intel](https://1y6auq.by.files.1drv.com/y4mKBY8DSRDdOzLkj8EddCFZ15CakEwgV6MBVPpyP8j1NfpypwK384XHXj5Z-gC7QaXp5R_y2fSdVgS7fLFbR7sVtI6wD56UmZdTL02GruviDSt_z9EYSxLotp6ptVP5iMJpkGU8IXEKKyV3XzCWOnVcd7PvQuG2ijwztG4PbinPa-EC1TwPxHKAhKREn4rC-ExKTTyY7Xx5qlKtHH0KNr2fQ?width=890&height=567&cropmode=none) You can find your intel library under [opt](https://ibb.co/mHGwdQ1) located under [Other Locations/Computer](https://ibb.co/Rv9hTgx) in Ubuntu 18.04 or higher.
+If your folder only have *compilers_and_libraries_2020*, then you don't have to make changes to *CMakeLists*. Proceed only if your installed intel ibrary looks like the image shown below![intel](https://1y6auq.by.files.1drv.com/y4mKBY8DSRDdOzLkj8EddCFZ15CakEwgV6MBVPpyP8j1NfpypwK384XHXj5Z-gC7QaXp5R_y2fSdVgS7fLFbR7sVtI6wD56UmZdTL02GruviDSt_z9EYSxLotp6ptVP5iMJpkGU8IXEKKyV3XzCWOnVcd7PvQuG2ijwztG4PbinPa-EC1TwPxHKAhKREn4rC-ExKTTyY7Xx5qlKtHH0KNr2fQ?width=890&height=567&cropmode=none) You can find your intel library under *opt* located under Other Locations in Ubuntu 18.04 or higher.
+![Other Locations/Computer Image](https://1i6auq.by.files.1drv.com/y4mWLwnraz61mgT3uCexm6_OcoSbygkXJcgkR_-vjo3JfpeeFUrz2JKE9XSKL1OPVTBPwaiTShC3fqhBO9gqBswOncvVCQgJqd06BWmB6ouhMlJ5kAiTA-jLxOKUD92LV8kcCSvc8KiYB0vnDQJBvYAQg9jXNXj1uYuIpuzySAjEwxdDsf-OE4eBNHNQM6CM4s_ClW4QgKxGA13RMwOK-0A9Q?width=890&height=567&cropmode=none) in Ubuntu 18.04 or higher.
 
 **So what to change**
 Change the path for *MKL* library in all three *CMakeLists* under src folder shown above.
