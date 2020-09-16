@@ -24,9 +24,9 @@ To get the project up and running, you'll need two make some changes to **libnlo
 
 Alternatively try to use this [link](https://registrationcenter.intel.com/en/products/postregistration/?sn=N2R2-4JNSSRNK&Sequence=2811162&encema=Wg/bUFJY2qspv9ef8QA1f/5nHuN+p/CyonGMjLT2nvOwcKXymcD+dWF8XDi6H++TyjHdL2SNzEo=&dnld=t&pass=yes)
 
--**Note :** You'll have to create an intel account to be able to download the libraries
+**Note :** You'll have to create an intel account to be able to download the libraries
 
-3. Since you have cloned the project in your workspace, your nlopt might not work and might throw a catkin_make error of *linker script*. So to get rid of this issue, move to this path - */home/user_PC_name/your_project_name/src/gen_utilities/libnlopt/install* and delete all files inside this folder. Now, clone the libnlopt library in any folder outside your project folder [libnlopt](https://github.com/stevengj/nlopt.git)
+3. Since you have cloned the project in your workspace, your nlopt might not work and might throw a catkin_make error of *linker script*. So to get rid of this issue, move to this path: - */home/user_PC_name/your_project_name/src/gen_utilities/libnlopt/install* and delete all files inside this folder. Now, clone the libnlopt library in any folder outside your project folder [libnlopt](https://github.com/stevengj/nlopt.git)
 
 **Note :** Make sure not to delete *CMakeLists.txt* and *package.xml* files inside your **libnlopt** folder, otherwise you'll face config file error while runnnig *catkin_make* command.
 
@@ -55,7 +55,7 @@ Run the below commands in terminal inside your cloned nlopt librart
 mkdir build
 cd build
 ```
-By default, this installs the NLopt shared library (libnlopt.so) in /usr/local/lib and the NLopt header file (nlopt.h) in /usr/local/include, as well manual pages and a few other files. Since, we do not want this to happen as our CMakeLists.txt located at */home/your_project_name/src/gen_utilities/gen_utilities* have different and if you want to keep that path, you need to install nlopt library to that path. Follow the script below to install to that path while you are still inside **build** folder created in the above steps:
+By default, this installs the NLopt shared library (libnlopt.so) in /usr/local/lib and the NLopt header file (nlopt.h) in /usr/local/include, as well manual pages and a few other files. Since, we do not want this to happen as our [CMakeLists.txt]!(https://ibb.co/mtmrj0H)  located at */home/your_project_name/src/gen_utilities/gen_utilities* have different and if you want to keep that path, you need to install nlopt library to that path. Follow the script below to install to that path while you are still inside **build** folder created in the above steps:
 
 ```shell
 cmake -DCMAKE_INSTALL_PREFIX=$/home/user_PC_name/your_project_name/src/gen_utilities/libnlopt/install ..
@@ -67,12 +67,9 @@ Now, you can see *include*, *lib* and *share* folder inside your **install** fol
 **Note :** Change *user_PC_name* to your system name and *your_project_name* to name of your project repository.
 
 
+### More Editing before building
 
-
-### Building
-
-If your project needs some additional steps for the developer to build the
-project after some code changes, state them here:
+Before you dive into running *catkin_make*, you still have to make some changes to *CMakeLists.txt* into different projects under src folder. View this ![image](https://ibb.co/tZ7RMzd) to know which folder contain the CMakeLists to make changes.
 
 ```shell
 ./configure
@@ -94,73 +91,3 @@ packagemanager deploy awesome-project -s server.com -u username -p password
 
 And again you'd need to tell what the previous code actually does.
 
-## Features
-
-What's all the bells and whistles this project can perform?
-* What's the main functionality
-* You can also do another thing
-* If you get really randy, you can even do this
-
-## Configuration
-
-Here you should write what are all of the configurations a user can enter when
-using the project.
-
-#### Argument 1
-Type: `String`  
-Default: `'default value'`
-
-State what an argument does and how you can use it. If needed, you can provide
-an example below.
-
-Example:
-```bash
-awesome-project "Some other value"  # Prints "You're nailing this readme!"
-```
-
-#### Argument 2
-Type: `Number|Boolean`  
-Default: 100
-
-Copy-paste as many of these as you need.
-
-## Contributing
-
-When you publish something open source, one of the greatest motivations is that
-anyone can just jump in and start contributing to your project.
-
-These paragraphs are meant to welcome those kind souls to feel that they are
-needed. You should state something like:
-
-"If you'd like to contribute, please fork the repository and use a feature
-branch. Pull requests are warmly welcome."
-
-If there's anything else the developer needs to know (e.g. the code style
-guide), you should link it here. If there's a lot of things to take into
-consideration, it is common to separate this section to its own file called
-`CONTRIBUTING.md` (or similar). If so, you should say that it exists here.
-
-## Links
-
-Even though this information can be found inside the project on machine-readable
-format like in a .json file, it's good to include a summary of most useful
-links to humans using your project. You can include links like:
-
-- Project homepage: https://your.github.com/awesome-project/
-- Repository: https://github.com/your/awesome-project/
-- Issue tracker: https://github.com/your/awesome-project/issues
-  - In case of sensitive bugs like security vulnerabilities, please contact
-    my@email.com directly instead of using issue tracker. We value your effort
-    to improve the security and privacy of this project!
-- Related projects:
-  - Your other project: https://github.com/your/other-project/
-  - Someone else's project: https://github.com/someones/awesome-project/
-
-
-## Licensing
-
-One really important part: Give your project a proper license. Here you should
-state what the license is and how to find the text version of the license.
-Something like:
-
-"The code in this project is licensed under MIT license."
