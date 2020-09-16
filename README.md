@@ -56,7 +56,7 @@ mkdir build
 cd build
 ```
 By default, this installs the NLopt shared library (libnlopt.so) in /usr/local/lib and the NLopt header file (nlopt.h) in /usr/local/include, as well manual pages and a few other files. Since, you do not want this to happen as your default CMakeList located at */home/your_project_name/src/gen_utilities/gen_utilities* have different and if you want to keep that path, you need to install nlopt library to that path. 
-![CMakeLists.txt](https://drive.google.com/file/d/1zfkT7jHaFDoqtgIIGejXcnZNrzTDKlxx/view?usp=sharing)  
+![CMakeLists.txt](https://drive.google.com/file/d/1MOQykkgWuRV2jmtqhV5ZCOILcVpUI6N3/view?usp=sharing)  
 Follow the script below to install to that path while you are still inside **build** folder created in the above steps:
 
 ```shell
@@ -65,8 +65,11 @@ make
 make install
 ```
 Now, you can see *include*, *lib* and *share* folder inside your **install** folder.
+Visit the official [website](https://nlopt.readthedocs.io/en/latest/NLopt_Installation/) to follow the steps mentioned here.
 
 **Note :** Change *user_PC_name* to your system name and *your_project_name* to name of your project repository.
+
+V
 
 
 ### Major Changes to CMakeLists Files
