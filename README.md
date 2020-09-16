@@ -27,7 +27,7 @@ To get the project up and running, you'll need two make some changes to **libnlo
 
 Alternatively try to use this [link](https://registrationcenter.intel.com/en/products/postregistration/?sn=N2R2-4JNSSRNK&Sequence=2811162&encema=Wg/bUFJY2qspv9ef8QA1f/5nHuN+p/CyonGMjLT2nvOwcKXymcD+dWF8XDi6H++TyjHdL2SNzEo=&dnld=t&pass=yes)
 
-If you want to avoid the hassle of making an account on Intel's website, then click the [link[(https://drive.google.com/drive/folders/1_wG-n7nX_Ribz_Bjuh5x9o1h_alulUeY?usp=sharing)] to download from Google Drive.
+If you want to avoid the hassle of making an account on Intel's website, then click the [link](https://drive.google.com/drive/folders/1_wG-n7nX_Ribz_Bjuh5x9o1h_alulUeY?usp=sharing) to download from Google Drive.
 
 **Note :** You'll have to create an intel account to be able to download the libraries. 
 **Note :** The libraries provided in the Google Drive are property of Intel and the author has no rights over these libraries. They can only be used for academic purpose.
