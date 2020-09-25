@@ -3,3 +3,4 @@
 /output.txt
 /.catkin_workspace
 /src/CMakeLists.txt
+/vertices_values.txt
