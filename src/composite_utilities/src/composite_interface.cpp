@@ -456,6 +456,24 @@ void Composite::MoveVertexTo(const Vec3d& target_point, const Vec3d& destination
 
 }
 
+double Composite::getGripDistance(int vecIDa, int vecIDb)
+{
+    double grip1[3];
+    double grip2[3];
+    double grip_dist = 0;
+    double xD = 0;
+    double yD = 0;
+    double zD = 0;
+    double xyzSum = 0;
+    m_sceneObjDeform->GetVertexPosition(vecIDa).convertToArray(grip1);
+    m_sceneObjDeform->GetVertexPosition(vecIDb).convertToArray(grip2);
+    xD = pow(grip1[0] - grip2[0], 2);
+    yD = pow(grip1[1] - grip2[1], 2);
+    zD = pow(grip1[2] - grip2[2], 2);
+    xyzSum = xD + yD + zD;
+    grip_dist = sqrt(xyzSum);
+    return grip_dist;
+}
 
 void Composite::Fun(const std::vector<int>& targetIDs,const std::vector<double>& dir)
 {
