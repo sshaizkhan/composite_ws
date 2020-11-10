@@ -21,6 +21,7 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
+#include <vector>
 /*******************************************/
 //ROS HEADERS
 /********************************************/
@@ -35,7 +36,7 @@ GLUI_StaticText * systemSolveStaticText;
 GLUI_StaticText * forceAssemblyStaticText;
 
 // graphics
-char windowTitleBase[4096] = "Composite Simulator";
+char windowTitleBase[4096] = "CAM-Composite Simulator";
 int windowID;
 int windowWidth = 800;
 int windowHeight = 600;
@@ -99,14 +100,50 @@ std::vector<Vec3d> outter_marker;
 
 std::vector<Vec3d> dummie_outter_marker;  // Alec 070620
 std::vector<Vec3d> m_training_marker; //Alec 070620
-
+// *****************//
+int vertexId;
+std::vector<int> maxErrVertices;
+// *****************//
 double zero= 0.00;
 std::vector<double> vec_0 {0,0,0};
 
-std::vector<int> fix0{273,3235,3236,4163};  //Alec 0630
-std::vector<int> fix1{79,4216,8301,11896};      //Alec 0630
-std::vector<int> fix2{259,3141,3142,4106};    //Alec 0630
-std::vector<int> fix3{4080,4089,7401,7457};      //Alec 0630
+// std::vector<int> fix0{12466,8267,5231,12467};  
+// std::vector<int> fix1{4180,2506,3723,4181};      
+// std::vector<int> fix2{12295,7357,6270,12296};    //T2
+// std::vector<int> fix3{1049,2356,3217,269}; 
+
+// std::vector<int> fix0{6591,12473,12474,8303};  
+// std::vector<int> fix1{11284,8083,4179,277};      
+// std::vector<int> fix2{12305,12306,7403,4944};    //T4
+// std::vector<int> fix3{1049,2356,3217,269};      
+
+std::vector<int> fix0{16346,12395,6891,6889};  
+std::vector<int> fix1{12131,15410,250,4935};      
+std::vector<int> fix2{15307,674,11526,11925};    //T3_NewMeshTrial1
+std::vector<int> fix3{15459,12240,5393,588};
+
+// std::vector<int> fix0{10708,12394,12395,2656};  
+// std::vector<int> fix1{16524,15410,2283,10215};      
+// std::vector<int> fix2{15307,3553,7946,16229};    //T3_NewMeshTrial2
+// std::vector<int> fix3{15459,16605,11301,3308};
+
+// std::vector<int> fix0{11485,16614,15539,3512};  
+// std::vector<int> fix1{10215,2283,15410,16524};      
+// std::vector<int> fix2{915,9927,11938,11937};    //T4_NewMeshTrial2
+// std::vector<int> fix3{2424,12227,12226,10400};
+
+// fixed point center vertex ids:
+// Shahwaz added on 1106
+
+std::vector<int> fix0Center{15541};  
+std::vector<int> fix1Center{12132};      
+std::vector<int> fix2Center{11926};    //T3_fix centers
+std::vector<int> fix3Center{12231};
+
+// std::vector<int> fix0Center{12391};  
+// std::vector<int> fix1Center{12132};      
+// std::vector<int> fix2Center{16232};    //T4_fix centers
+// std::vector<int> fix3Center{15457};
 
 // std::vector<int> fix_tn0= {0,13,20,49,64,82,248,253,263,271,273,284};
 std::vector<int> fix_tn0= {248,253,284,0,20,13,82,64,49,273,263,271};  // order ABCD left mid right
@@ -116,19 +153,52 @@ std::vector<int> fix_tn3= {51,19,13,260,257,280,203,234,244,4,30,3};  // order A
 std::vector<int> fix_tn4= {285,253,251,16,1,30,43,66,47};  // order ABCD left mid right last 3 241,265,239
 std::vector<std::vector<int>> fix_training_neighbors= {fix_tn0,fix_tn1,fix_tn2,fix_tn3,fix_tn4};
 
-Vec3d v3d_A0 = Vec3d(0.725785,0,0.082555);
-Vec3d v3d_B0 = Vec3d(0.603548,0,1.21175);
-Vec3d v3d_C0 = Vec3d(-0.23684,0,0.977905);
-Vec3d v3d_D0 = Vec3d(0,0,0);
+// Vec3d v3d_A0 = Vec3d(0.198640,0,0.943000);   
+// Vec3d v3d_B0 = Vec3d(-0.657022,0,1.200175);  //T2
+// Vec3d v3d_C0 = Vec3d(-0.779260,0,0.17145); 
+// Vec3d v3d_D0 = Vec3d(0,0,0); 
 
-Vec3d v3d_A1 = Vec3d(0.709837,0.032857,0.127454);
-Vec3d v3d_A2 = Vec3d(0.567085,0.1330165,0.237639);
-Vec3d v3d_B1 = Vec3d(0.509687,0.01593,1.257482);
-Vec3d v3d_B2 = Vec3d(0.456382,0.2627485,1.11211);
-Vec3d v3d_C1 = Vec3d(-0.313584,-0.015563,0.97006);
-Vec3d v3d_C2 = Vec3d(-0.219983,0.2597755,0.93504);
-Vec3d v3d_D1 = Vec3d(0.0,0.0,0.0);
-Vec3d v3d_D2 = Vec3d(0.0,0.0,0.0); //Drop it
+Vec3d v3d_A0 = Vec3d(0.121883,0,0.9643365);   
+Vec3d v3d_B0 = Vec3d(-0.7807535,0,1.151719);  //T3_NewMeshTrial1
+Vec3d v3d_C0 = Vec3d(-0.837883,0,0.2513675); 
+Vec3d v3d_D0 = Vec3d(0,0,0); 
+
+// Vec3d v3d_A0 = Vec3d(0.129500,0,0.968866);   
+// Vec3d v3d_B0 = Vec3d(-0.776945,0,1.169960);  //T3_NewMeshTrial2
+// Vec3d v3d_C0 = Vec3d(-0.845500,0,0.265038); 
+// Vec3d v3d_D0 = Vec3d(0,0,0);
+
+// Vec3d v3d_A0 = Vec3d(0.198000,0,1.032851);   
+// Vec3d v3d_B0 = Vec3d(-0.708445,0,1.169960);  //T4_NewMeshTrial
+// Vec3d v3d_C0 = Vec3d(-0.777000,0,0.329022); 
+// Vec3d v3d_D0 = Vec3d(0,0,0);
+
+// Vec3d v3d_A1 = Vec3d(0.06288,-0.0036665,0.912126); 
+// Vec3d v3d_A2 = Vec3d(0.050563,0.0675485,0.896538);  
+// Vec3d v3d_B1 = Vec3d(-0.808377,-0.0010165,1.038368);
+// Vec3d v3d_B2 = Vec3d(-0.787239,0.093844,0.99416); //  T2
+// Vec3d v3d_C1 = Vec3d(-0.767154,0.009518,0.003424); 
+// Vec3d v3d_C2 = Vec3d(-0.71960,0.115937,0.010751); 
+// Vec3d v3d_D1 = Vec3d(0.0,0.0,0.0); 
+// Vec3d v3d_D2 = Vec3d(0.0,0.0,0.0); //Drop it
+
+Vec3d v3d_A1 = Vec3d(0.003418,0.008986,0.967035); 
+Vec3d v3d_A2 = Vec3d(-0.052287,0.0790045,0.924629);
+Vec3d v3d_B1 = Vec3d(-0.881043,0.030003,1.06678);
+Vec3d v3d_B2 = Vec3d(-0.836011,0.0909105,1.00588); //T3_NewMeshTrial
+Vec3d v3d_C1 = Vec3d(-0.866209,0.0086345,0.153300); 
+Vec3d v3d_C2 = Vec3d(-0.789734,0.135744,0.173395); 
+Vec3d v3d_D1 = Vec3d(0.0,0.0,0.0); 
+Vec3d v3d_D2 = Vec3d(0.0,0.0,0.0); //Drop it 
+
+// Vec3d v3d_A1 = Vec3d(0.138072,-0.00644145,1.040013); 
+// Vec3d v3d_A2 = Vec3d(0.047424,0.08600245,1.054323);  
+// Vec3d v3d_B1 = Vec3d(-0.766079,-0.03148895,1.132309);
+// Vec3d v3d_B2 = Vec3d(-0.735901,0.09783145,1.072893); //T4_NewMeshTrial
+// Vec3d v3d_C1 = Vec3d(-0.813698,0.0133445,0.287432); 
+// Vec3d v3d_C2 = Vec3d(-0.678888,0.09244145,0.262918); 
+// Vec3d v3d_D1 = Vec3d(0.0,0.0,0.0); 
+// Vec3d v3d_D2 = Vec3d(0.0,0.0,0.0); //Drop it
 
 std::vector<Vec3d> v3d0= {v3d_A0,v3d_B0,v3d_C0,v3d_D0};
 std::vector<Vec3d> v3d1= {v3d_A1,v3d_B1,v3d_C1,v3d_D1};
@@ -423,11 +493,23 @@ void get_err(int fixNumber)
   // }
 
   std::vector<std::string> training_data(5);
-  training_data[0]= "/home/shah/composite_ws/src/sheet_model_training/data/AlecZach/T1S1.txt";
-  training_data[1]= "/home/shah/composite_ws/src/sheet_model_training/data/AlecZach/T1S2.txt";
-  training_data[2]= "/home/shah/composite_ws/src/sheet_model_training/data/AlecZach/T1S3.txt";
-  training_data[3]= "/home/shah/composite_ws/src/sheet_model_training/data/AlecZach/T1S4.txt";
-  training_data[4]= "/home/shah/composite_ws/src/sheet_model_training/data/AlecZach/T1S5.txt";
+  // training_data[0]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S1_Final.txt";
+  // training_data[1]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S2_Final.txt";
+  // training_data[2]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S3_Final.txt";  //T2
+  // training_data[3]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S4_Final.txt";
+  // training_data[4]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S5_Final.txt";
+
+  // training_data[0]= "/home/shah/composite_ws/src/sheet_model_training/data/T4/Txt_T4S1_Final.txt";
+  // training_data[1]= "/home/shah/composite_ws/src/sheet_model_training/data/T4/Txt_T4S2_Final.txt";
+  // training_data[2]= "/home/shah/composite_ws/src/sheet_model_training/data/T4/Txt_T4S3_Final.txt";  //T4
+  // training_data[3]= "/home/shah/composite_ws/src/sheet_model_training/data/T4/Txt_T4S4_Final.txt";
+  // training_data[4]= "/home/shah/composite_ws/src/sheet_model_training/data/T4/Txt_T4S5_Final.txt";
+
+  training_data[0]= "/home/shah/composite_ws/src/sheet_model_training/data/T3_newMesh/Txt_T3S1_Final.txt";
+  training_data[1]= "/home/shah/composite_ws/src/sheet_model_training/data/T3_newMesh/Txt_T3S2_Final.txt";
+  training_data[2]= "/home/shah/composite_ws/src/sheet_model_training/data/T3_newMesh/Txt_T3S3_Final.txt";  //T3_NewMeshTrial
+  training_data[3]= "/home/shah/composite_ws/src/sheet_model_training/data/T3_newMesh/Txt_T3S4_Final.txt";
+  training_data[4]= "/home/shah/composite_ws/src/sheet_model_training/data/T3_newMesh/Txt_T3S5_Final.txt";
   // cout << 'training_data:' << training_data[fixNum] << endl; 
   // Vec3d offset;
   if(m_training_marker.size() != 0){
@@ -493,28 +575,88 @@ void get_err(int fixNumber)
     // sheet->getClosestVertex(v3d[1][3],distPTR);
     // cout << "  D: " << *distPTR << endl;
   }
-  for(int i=0; i<m_training_marker.size(); i++){
+    // Zach added 1105 to check boundary conditions
+    // double gripDist = 0;
+    // // Check AB
+    // gripDist = sheet->getGripDistance(fix0[0],fix1[0]);
+    // cout << "Gripping Distance AB: " << gripDist << endl;
+    // // Check BC
+    // gripDist = sheet->getGripDistance(fix1[0],fix2[0]);
+    // cout << "Gripping Distance BC: " << gripDist << endl;
+    // // Check CD
+    // gripDist = sheet->getGripDistance(fix2[0],fix3[0]);
+    // cout << "Gripping Distance CD: " << gripDist << endl;
+    // // Check AD
+    // gripDist = sheet->getGripDistance(fix0[0],fix3[0]);
+    // cout << "Gripping Distance AD: " << gripDist << endl;
+    // // Check AC
+    // gripDist = sheet->getGripDistance(fix0[0],fix2[0]);
+    // cout << "Gripping Distance AC: " << gripDist << endl;
+    // // Check BD
+    // gripDist = sheet->getGripDistance(fix1[0],fix3[0]);
+    // cout << "Gripping Distance BD: " << gripDist << endl;
+
+  // Shahwaz added on 1106 to check refine boundary conditions
+  double gripDist = 0;
+    // Check AB
+  gripDist = sheet->getGripDistance(fix0Center[0],fix1Center[0]);
+  cout << "Gripping Distance AB: " << gripDist << endl;
+    // Check AC
+  gripDist = sheet->getGripDistance(fix0Center[0],fix2Center[0]);
+  cout << "Gripping Distance AC: " << gripDist << endl;
+    // Check AD
+  gripDist = sheet->getGripDistance(fix0Center[0],fix3Center[0]);
+  cout << "Gripping Distance AD: " << gripDist << endl;
+    // Check BC
+  gripDist = sheet->getGripDistance(fix1Center[0],fix2Center[0]);
+  cout << "Gripping Distance BC: " << gripDist << endl;
+    // Check BD
+  gripDist = sheet->getGripDistance(fix1Center[0],fix3Center[0]);
+  cout << "Gripping Distance BD: " << gripDist << endl;
+    // Check CD
+  gripDist = sheet->getGripDistance(fix2Center[0],fix3Center[0]);
+  cout << "Gripping Distance CD: " << gripDist << endl;
+    
+  for(int i=0; i<m_training_marker.size(); i++)
+  {
     // cout << "m_training_marker[i]:" << m_training_marker[i] << endl;
+    // cout << "m_training_marker.size() = " << m_training_marker.size() << endl;
     // cout << "type" << typeid(m_training_marker[i]).name << endl;
     // cout << "type" << type_name<decltype(m_training_marker[i])>() << endl;
     // m_sceneObjDeform->GetClosestVertex(m_training_marker[i],distPTR); //capital G in Get
     sheet->getClosestVertex(m_training_marker[i],distPTR); //capital G in Get
-    
-    //Alec added 0707 finding error of fix point neighbors, should be small
-    if(i==fix_tn_list[j]){
-      // cout << "--------FIX NEIGHBOR HERE------" << fix_training_neighbors[j] << endl;
+      
+      //Alec added 0707 finding error of fix point neighbors, should be small
+    if(i==fix_tn_list[j])
+    {
+        // cout << "--------FIX NEIGHBOR HERE------" << fix_training_neighbors[j] << endl;
       fix_neighbor_err+= *distPTR;
       j++;
     }
-    // m_sceneObjDeform->getClosestVertex(m_training_marker[i],distPTR);
-    // cout << "distPTR:" << *distPTR << endl;
+      // m_sceneObjDeform->getClosestVertex(m_training_marker[i],distPTR);
+      // cout << "distPTR:" << *distPTR << endl;
     if(*distPTR==0)
       *distPTR=0.1;
     if(*distPTR>max_err)
-        max_err = *distPTR;
+    {
+      max_err = *distPTR;
+      
+      // Shahwaz added on 11Nov2020
+      vertexId = sheet->getVertexID(m_training_marker[i]);
+      maxErrVertices.emplace_back(vertexId);
+    } 
+    avg_err+=*distPTR;
 
-    avg_err+=*distPTR; 
   }
+// Shahwaz added on 11Nov2020
+  
+  for (auto it = maxErrVertices.begin(); it != maxErrVertices.end(); ++it)
+  {
+    cout << ' ' << *it;
+  }
+
+  cout << endl;
+  cout << "Vertex Id with max error:  " << vertexId<< endl;
   avg_err/= m_training_marker.size();
   fix_neighbor_err/= fix_tn_list.size();
   cout << "avg_err:" << avg_err << endl;
@@ -526,6 +668,8 @@ void get_err(int fixNumber)
   // return (avg_err*1+max_err*0.5);
   // return getError();
 }
+
+  
 
 void idleFunction(void)
 {
@@ -546,7 +690,7 @@ void idleFunction(void)
   static int t7= 3*sim_action_time_step;
   static int t8= 4*sim_action_time_step;
   static int t9= 4*sim_action_time_step;
-  static int t15=7*sim_action_time_step; //8
+  static int t15=5*sim_action_time_step; //8
   static int t30=15*sim_action_time_step;
   static int tinf=1000*sim_action_time_step;
 
@@ -582,6 +726,7 @@ void idleFunction(void)
   }
 
   sheet->resetConstraints();
+  
 
   if(timeStepCount<t2 && timeStepCount>=t1){
     sheet->MoveSurfaceTo3D(fix0,vec[0][0],dt,0);
@@ -621,6 +766,7 @@ void idleFunction(void)
 
   sheet->finalizeAllConstraints();
   
+
   // if (timeStepCount % 100 ==0){
   //   cout <<"\ntimeStepCount: "<<timeStepCount<<endl;
   // }
@@ -643,7 +789,9 @@ void idleFunction(void)
   
   ros::spinOnce();
 
-  glutPostRedisplay();  
+  glutPostRedisplay(); 
+  // Shahwaz added on 11Nov2020
+  sheet->MoveVertexTo(vertexId,0,0); 
 }
 
 
@@ -908,5 +1056,6 @@ int main(int argc, char* argv[])
   initScene();
   // make window and size it properly
   glutMainLoop();
+
   return 0;
 }
