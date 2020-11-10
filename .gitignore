@@ -4,3 +4,6 @@
 /.catkin_workspace
 /src/CMakeLists.txt
 /vertices_values.txt
+/src/composite_utilities/include/composite_utilities/.Rhistory
+/src/sheet_model_training/include/sheet_model_training/.Rhistory
+/.vscode/
