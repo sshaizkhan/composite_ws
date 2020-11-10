@@ -172,6 +172,7 @@ public:
     void MoveSurfaceTo(const std::vector<Vec3d>& target_point, const std::vector<Vec3d>& destination);
     void MoveVertexTo(const Vec3d& target_point, const Vec3d& destination);
     void Fun(const std::vector<int>& targetIDs,const std::vector<double>& dir);
+    double getGripDistance(int vecIDa, int vecIDb);
     void MoveSurfaceTo3D(const std::vector<int>& targetIDs, const std::vector<double>& dir, const double& dist, const int& x); //AlecZach
     void MoveVertexTo3D(const int& targetID, const std::vector<double>& dir, const double& dist, const int& x);                //AlecZach
     //Make sure to finalize constraints once all constraints are added.
