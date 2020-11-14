@@ -4,7 +4,8 @@
 <!-- ///////////////////User Input////////////////////////// -->
 <arg name="configFilename" value="sheet_tracking_FEM.config"/>
 <arg name="lightingFile" value="cloth.lighting"/>
-<arg name="meshFilename" value="NewMeshT3_129_129.obj"/>
+<!--arg name="meshFilename" value="ResizedMesh3_T4.obj"/-->
+<arg name="meshFilename" value="NewMeshT1_129_129.obj"/>
 <!-- <arg name="dataFilename" value="grip5_5.csv"/> -->
 <arg name="dataFilename" value=" "/>
 <!-- <arg name="compareFilename" value="boeing/rot_shift_new_center_grip5_curve_5.csv"/> -->
