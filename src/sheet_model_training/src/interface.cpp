@@ -78,11 +78,11 @@ int main(int argc, char* argv[])
 
     std::vector<std::string> training_data(5);
 
-    training_data[0]= package_path+ "/data/AlecZach/T1S1.txt";
-    training_data[1]= package_path+ "/data/AlecZach/T1S2.txt";
-    training_data[2]= package_path+ "/data/AlecZach/T1S3.txt";
-    training_data[3]= package_path+ "/data/AlecZach/T1S4.txt";
-    training_data[4]= package_path+ "/data/AlecZach/T1S5.txt";
+    training_data[0]= package_path+ "/data/T4/Txt_T4S1_Final.txt";
+    training_data[1]= package_path+ "/data/T4/Txt_T4S2_Final.txt";
+    training_data[2]= package_path+ "/data/T4/Txt_T4S3_Final.txt";
+    training_data[3]= package_path+ "/data/T4/Txt_T4S4_Final.txt";
+    training_data[4]= package_path+ "/data/T4/Txt_T4S5_Final.txt";
 
     // training_data[0]= argv[11];  // use parse data here
     // training_data[1]= argv[12];
@@ -94,55 +94,7 @@ int main(int argc, char* argv[])
     cout << "training_data 2:" << training_data[2] << endl;
     cout << "training_data 3:" << training_data[3] << endl;
     cout << "training_data 4:" << training_data[4] << endl;
-    // cout << "argv[0]:" << argv[0] << endl;
-    // cout << "argv[1]:" << argv[1] << endl;
-    // cout << "argv[2]:" << argv[2] << endl;
-    // cout << "argv[3]:" << argv[3] << endl;
-    // cout << "argv[4]:" << argv[4] << endl;
-    // cout << "argv[5]:" << argv[5] << endl;
-    // // cout << "argv[6]:" << argv[6] << endl;
-    // // cout << "argv[7]:" << argv[7] << endl;
-    // // cout << "argv[8]:" << argv[8] << endl;
-    // cout << "argv[9]:" << argv[9] << endl;
-    // cout << "argv[10]:" << argv[10] << endl;
-    // cout << "argv[11]:" << argv[11] << endl;
-    // cout << "argv[12]:" << argv[12] << endl;
-    // cout << "argv[13]:" << argv[13] << endl;
-    // cout << "argv[14]:" << argv[14] << endl;
-    // cout << "argv[15]:" << argv[15] << endl;
-    // cout << "argv[16]:" << argv[16] << endl;
-    // cout << "argv[17]:" << argv[17] << endl;
-    // cout << "argv[18]:" << argv[18] << endl;
-    // cout << "argv[19]:" << argv[19] << endl;
-    // cout << "argv[20]:" << argv[20] << endl;
-    // cout << "argv[21]:" << argv[21] << endl;
-
-
-
-
-
-
-
-
-	// Change this to be the correct mesh
-	 //meshpath = package_path + "/mesh/boeing/mesh"+std::to_string(i+4)+"_"+std::to_string(j+1)+".obj";
-
-			
-	// For number of trials
-	// for(int i = 0; i < 1; i++)
-	// {
-	// 	// For number of stages
-	// 	for(int j = 0; j < 5; j++)
-	// 	{			
-	// 		trainingpath = argv[j];
-	// 		std::cout << trainingpath.data()<<std::endl;
-	// 		std::cout << meshpath.data()<<std::endl;
-	// 		//meshnames.push_back(meshpath);
-	// 		meshpath.clear();
-	// 		training_data.push_back(trainingpath);
-	// 		trainingpath.clear();			
-	// 	}
-	// }
+ 
 	
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
