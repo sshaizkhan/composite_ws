@@ -11,7 +11,7 @@ using namespace std;
     else
       cout<<"-----[Using ClothBW model]-----\n";
       
-  setDensity(0.5); //0.047
+  setDensity(0.3); //0.047
   setThickness(0.0003); //0.001
   setPoisson(0.3);
   setGravity(9.81);
@@ -199,10 +199,30 @@ double Composite_Training::solve_err_with_constraints(const char* objMeshname,co
   double zero= 0.00;
   std::vector<double> vec_0 {0,0,0};
 
-  std::vector<int> fix0{273,3235,3236,4163};  //Alec 0630
-  std::vector<int> fix1{79,4216,8301,11896};      //Alec 0630
-  std::vector<int> fix2{259,3141,3142,4106};    //Alec 0630
-  std::vector<int> fix3{4080,4089,7401,7457};      //Alec 0630
+  // std::vector<int> fix0{1507,11878,12398,12397};  
+  // std::vector<int> fix1{16598,15412,3147,11163};      
+  // std::vector<int> fix2{11914,11915,2904,10947};    //T2_NewMeshTrial
+  // std::vector<int> fix3{2424,12227,12226,10400}; 
+
+  std::vector<int> fix0{11482,3511,12391,12390};  
+  std::vector<int> fix1{10215,2283,15410,16524};      
+  std::vector<int> fix2{916,7976,15312,16232};    //T4_NewMeshTrial2
+  std::vector<int> fix3{2424,12227,12226,10400};
+
+  // std::vector<int> fix0{273,3235,3236,4163};  //Alec 0630
+  // std::vector<int> fix1{79,4216,8301,11896};      //Alec 0630
+  // std::vector<int> fix2{259,3141,3142,4106};    //Alec 0630
+  // std::vector<int> fix3{4080,4089,7401,7457};      //Alec 0630
+
+  // std::vector<int> fix0Center{16347};  
+  // std::vector<int> fix1Center{12136};      
+  // std::vector<int> fix2Center{15301};    //T2_fix centers
+  // std::vector<int> fix3Center{15457};
+
+  std::vector<int> fix0Center{15539};  
+  std::vector<int> fix1Center{12132};      
+  std::vector<int> fix2Center{11937};    //T4_fix centers
+  std::vector<int> fix3Center{15457};
 
   // std::vector<int> fix_tn0= {0,13,20,49,64,82,248,253,263,271,273,284};
   std::vector<int> fix_tn0= {248,253,284,0,20,13,82,64,49,273,263,271};  // order ABCD left mid right
@@ -212,19 +232,47 @@ double Composite_Training::solve_err_with_constraints(const char* objMeshname,co
   std::vector<int> fix_tn4= {285,253,251,16,1,30,43,66,47};  // order ABCD left mid right last 3 241,265,239
   std::vector<std::vector<int>> fix_training_neighbors= {fix_tn0,fix_tn1,fix_tn2,fix_tn3,fix_tn4};
 
-  Vec3d v3d_A0 = Vec3d(0.725785,0,0.082555);
-  Vec3d v3d_B0 = Vec3d(0.603548,0,1.21175);
-  Vec3d v3d_C0 = Vec3d(-0.23684,0,0.977905);
+  // Vec3d v3d_A0 = Vec3d(0.198000, 0, 0.914022);   
+  // Vec3d v3d_B0 = Vec3d(-0.647508, 0, 1.169960);  //T2_NewMeshTrial
+  // Vec3d v3d_C0 = Vec3d(-0.777000, 0, 0.127929); 
+  // Vec3d v3d_D0 = Vec3d(0,0,0); 
+
+  Vec3d v3d_A0 = Vec3d(0.198000,0,1.041991);   
+  Vec3d v3d_B0 = Vec3d(-0.708445,0,1.169960);  //T4_NewMeshTrial
+  Vec3d v3d_C0 = Vec3d(-0.777000,0,0.319882); 
   Vec3d v3d_D0 = Vec3d(0,0,0);
 
-  Vec3d v3d_A1 = Vec3d(0.709837,0.032857,0.127454);
-  Vec3d v3d_A2 = Vec3d(0.567085,0.1330165,0.237639);
-  Vec3d v3d_B1 = Vec3d(0.509687,0.01593,1.257482);
-  Vec3d v3d_B2 = Vec3d(0.456382,0.2627485,1.11211);
-  Vec3d v3d_C1 = Vec3d(-0.313584,-0.015563,0.97006);
-  Vec3d v3d_C2 = Vec3d(-0.219983,0.2597755,0.93504);
-  Vec3d v3d_D1 = Vec3d(0.0,0.0,0.0);
+  // Vec3d v3d_A0 = Vec3d(0.725785,0,0.082555);
+  // Vec3d v3d_B0 = Vec3d(0.603548,0,1.21175);
+  // Vec3d v3d_C0 = Vec3d(-0.23684,0,0.977905);
+  // Vec3d v3d_D0 = Vec3d(0,0,0);
+
+  // Vec3d v3d_A1 = Vec3d(0.06288,-0.0036665,0.912126); 
+  // Vec3d v3d_A2 = Vec3d(0.050563,0.0675485,0.896538);  
+  // Vec3d v3d_B1 = Vec3d(-0.808377,-0.0010165,1.038368);
+  // Vec3d v3d_B2 = Vec3d(-0.787239,0.093844,0.99416); //  T2_NewMeshTrial
+  // Vec3d v3d_C1 = Vec3d(-0.767154,0.009518,0.003424); 
+  // Vec3d v3d_C2 = Vec3d(-0.71960,0.115937,0.010751); 
+  // Vec3d v3d_D1 = Vec3d(0.0,0.0,0.0); 
+  // Vec3d v3d_D2 = Vec3d(0.0,0.0,0.0); //Drop it
+
+  Vec3d v3d_A1 = Vec3d(0.136423,-0.00327655,1.051020); 
+  Vec3d v3d_A2 = Vec3d(0.047424,0.08600245,1.054323);  
+  Vec3d v3d_B1 = Vec3d(-0.766079,-0.03148895,1.132309);
+  Vec3d v3d_B2 = Vec3d(-0.735901,0.09783145,1.072893); //T4_NewMeshTrial
+  Vec3d v3d_C1 = Vec3d(-0.813698,0.0133445,0.287432); 
+  Vec3d v3d_C2 = Vec3d(-0.678888,0.09244145,0.262918); 
+  Vec3d v3d_D1 = Vec3d(0.0,0.0,0.0); 
   Vec3d v3d_D2 = Vec3d(0.0,0.0,0.0); //Drop it
+
+  // Vec3d v3d_A1 = Vec3d(0.709837,0.032857,0.127454);
+  // Vec3d v3d_A2 = Vec3d(0.567085,0.1330165,0.237639);
+  // Vec3d v3d_B1 = Vec3d(0.509687,0.01593,1.257482);
+  // Vec3d v3d_B2 = Vec3d(0.456382,0.2627485,1.11211);
+  // Vec3d v3d_C1 = Vec3d(-0.313584,-0.015563,0.97006);
+  // Vec3d v3d_C2 = Vec3d(-0.219983,0.2597755,0.93504);
+  // Vec3d v3d_D1 = Vec3d(0.0,0.0,0.0);
+  // Vec3d v3d_D2 = Vec3d(0.0,0.0,0.0); //Drop it
 
   std::vector<Vec3d> v3d0= {v3d_A0,v3d_B0,v3d_C0,v3d_D0};
   std::vector<Vec3d> v3d1= {v3d_A1,v3d_B1,v3d_C1,v3d_D1};
@@ -340,10 +388,10 @@ double Composite_Training::solve_err_with_constraints(const char* objMeshname,co
   int loop = 50;
   int start_time=0;
   int stop_time=50;
-  if (fixNum == 4){
-    loop*=3;
-    stop_time*=3;
-  }
+  // if (fixNum == 4){
+  //   loop*=3;
+  //   stop_time*=3;
+  // }
   int extra_loops= 2;
   int extra_loops_counter= 0;
   for(int timeStepCount = 0; timeStepCount < loop; timeStepCount++)
