@@ -66,8 +66,8 @@ void Composite::updateParam(const vector<double>& p){
       m_shear_stretch_Material = p[0];
       m_bend_Material = p[1];
       m_dampingStiffness = p[2];
-      cout << "Alec Updated SHEAR STIFFNESS:  " << m_shear_stretch_Material << endl;
-      cout << "Alec Updated Bend Material:  " << m_bend_Material << endl;
+      cout << "Shahwaz Updated SHEAR STIFFNESS:  " << m_shear_stretch_Material << endl;
+      cout << "Shahwaz Updated Bend Material:  " << m_bend_Material << endl;
       // cout << "Alec damping stiffness:  " << m_dampingStiffness << endl;
 
   }
