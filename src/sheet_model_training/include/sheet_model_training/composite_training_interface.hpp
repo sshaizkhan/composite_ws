@@ -82,9 +82,8 @@ protected:
 	// double shear_stretch_Material;
 	// double bend_Material;
 
-
 };
-inline void parseData(const char* filename, std::vector<Vec3d>& fixed, std::vector<Vec3d>& point,const int& fixNum, const int& ifCenter){
+inline void  parseData(const char* filename, std::vector<Vec3d>& fixed, std::vector<Vec3d>& point,const int& fixNum, const int& ifCenter){
 		std::fstream fin;
 		// std::cout<<"file name:"<< filename << std::endl;
 	  	fin.open(filename);
