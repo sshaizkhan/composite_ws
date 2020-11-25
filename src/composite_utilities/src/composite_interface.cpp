@@ -475,6 +475,40 @@ double Composite::getGripDistance(int vecIDa, int vecIDb)
     return grip_dist;
 }
 
+std::vector<std::vector<double>> Composite::getPositionVector(int clampID1, int clampID2, int clampID3, int clampID4)
+{
+  double clamp1[3];
+  double clamp2[3];
+  double clamp3[3];
+  double clamp4[3];
+  
+  std::vector<double> A;
+  std::vector<double> B;
+  std::vector<double> C;
+  std::vector<double> D;
+
+  std::vector<std::vector<double>> clampPosition; 
+
+  m_sceneObjDeform->GetVertexPosition(clampID1).convertToArray(clamp1);
+  m_sceneObjDeform->GetVertexPosition(clampID2).convertToArray(clamp2);
+  m_sceneObjDeform->GetVertexPosition(clampID3).convertToArray(clamp3);
+  m_sceneObjDeform->GetVertexPosition(clampID4).convertToArray(clamp4);
+
+  A = {clamp1[0], clamp1[1], clamp1[2]};
+  B = {clamp2[0], clamp2[1], clamp2[2]};
+  C = {clamp3[0], clamp3[1], clamp3[2]};
+  D = {clamp4[0], clamp4[1], clamp4[2]};
+
+  
+  clampPosition.push_back(A);
+  clampPosition.push_back(B);
+  clampPosition.push_back(C);
+  clampPosition.push_back(D);
+
+  return clampPosition;
+
+}
+
 void Composite::Fun(const std::vector<int>& targetIDs,const std::vector<double>& dir)
 {
   cout <<"FUN!!!!"<<endl;
