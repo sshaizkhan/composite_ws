@@ -105,6 +105,8 @@ std::vector<Vec3d> m_training_marker; //Alec 070620
 int vertexId;
 std::vector<int> maxErrVertices;
 double thresholdError = 0.04;
+std::vector<std::vector<int>> clamps;
+std::vector<std::vector<double>> clampPosition;
 // *****************//
 
 double zero= 0.00;
@@ -120,7 +122,7 @@ std::vector<double> vec_0 {0,0,0};
 std::vector<int> fix0{1507,11878,12398,12397};  
 std::vector<int> fix1{16598,15412,3147,11163};      
 std::vector<int> fix2{11914,11915,2904,10947};    //T2_NewMeshTrial
-std::vector<int> fix3{2424,12227,12226,10400}; 
+std::vector<int> fix3{2424,12227,12226,10400};
 
 // std::vector<int> fix0{2657,15541,16346,9154};  
 // std::vector<int> fix1{16524,15410,2283,10215};      
@@ -132,6 +134,7 @@ std::vector<int> fix3{2424,12227,12226,10400};
 // std::vector<int> fix2{916,7976,15312,16232};    //T4_NewMeshTrial2
 // std::vector<int> fix3{2424,12227,12226,10400};
 
+// ========================================================//
 
 // fixed point center vertex ids:
 // Shahwaz added on 1106
@@ -146,6 +149,7 @@ std::vector<int> fix1Center{12136};
 std::vector<int> fix2Center{15301};    //T2_fix centers
 std::vector<int> fix3Center{15457};
 
+
 // std::vector<int> fix0Center{12394};  
 // std::vector<int> fix1Center{12132};      
 // std::vector<int> fix2Center{16229};    //T3_fix centers
@@ -156,6 +160,8 @@ std::vector<int> fix3Center{15457};
 // std::vector<int> fix2Center{11937};    //T4_fix centers
 // std::vector<int> fix3Center{15457};
 
+// =======================================================//
+
 // std::vector<int> fix_tn0= {0,13,20,49,64,82,248,253,263,271,273,284};
 std::vector<int> fix_tn0= {248,253,284,0,20,13,82,64,49,273,263,271};  // order ABCD left mid right
 std::vector<int> fix_tn1= {48,30,11,279,252,281,200,232,246,4,22,3};  // order ABCD left mid right
@@ -164,6 +170,7 @@ std::vector<int> fix_tn3= {51,19,13,260,257,280,203,234,244,4,30,3};  // order A
 std::vector<int> fix_tn4= {285,253,251,16,1,30,43,66,47};  // order ABCD left mid right last 3 241,265,239
 std::vector<std::vector<int>> fix_training_neighbors= {fix_tn0,fix_tn1,fix_tn2,fix_tn3,fix_tn4};
 
+// ==========================================================//
 
 // Vec3d v3d_A0 = Vec3d(0.258900, 0, 1.041991);   
 // Vec3d v3d_B0 = Vec3d(-0.647545, 0, 1.169960);  //T1_NewMeshTrial
@@ -223,6 +230,7 @@ Vec3d v3d_D2 = Vec3d(0.0,0.0,0.0); //Drop it
 // Vec3d v3d_D1 = Vec3d(0.0,0.0,0.0); 
 // Vec3d v3d_D2 = Vec3d(0.0,0.0,0.0); //Drop it
 
+// =============================================================//
 
 std::vector<Vec3d> v3d0= {v3d_A0,v3d_B0,v3d_C0,v3d_D0};
 std::vector<Vec3d> v3d1= {v3d_A1,v3d_B1,v3d_C1,v3d_D1};
@@ -543,6 +551,11 @@ void get_err(int fixNumber)
   // training_data[3]= "/home/shah/composite_ws/src/sheet_model_training/data/T4/Txt_T4S4_Final.txt";
   // training_data[4]= "/home/shah/composite_ws/src/sheet_model_training/data/T4/Txt_T4S5_Final.txt";
 
+  clamps.push_back(fix0);
+  clamps.push_back(fix1);
+  clamps.push_back(fix2);
+  clamps.push_back(fix3);
+
   // // cout << 'training_data:' << training_data[fixNum] << endl; 
   // Vec3d offset;
   if(m_training_marker.size() != 0){
@@ -629,26 +642,75 @@ void get_err(int fixNumber)
     // gripDist = sheet->getGripDistance(fix1[0],fix3[0]);
     // cout << "Gripping Distance BD: " << gripDist << endl;
 
-  // Shahwaz added on 1106 to check refine boundary conditions
-  double gripDist = 0;
-    // Check AB
-  gripDist = sheet->getGripDistance(fix0Center[0],fix1Center[0]);
-  cout << "Gripping Distance AB: " << gripDist << endl;
-    // Check AC
-  gripDist = sheet->getGripDistance(fix0Center[0],fix2Center[0]);
-  cout << "Gripping Distance AC: " << gripDist << endl;
-    // Check AD
-  gripDist = sheet->getGripDistance(fix0Center[0],fix3Center[0]);
-  cout << "Gripping Distance AD: " << gripDist << endl;
-    // Check BC
-  gripDist = sheet->getGripDistance(fix1Center[0],fix2Center[0]);
-  cout << "Gripping Distance BC: " << gripDist << endl;
-    // Check BD
-  gripDist = sheet->getGripDistance(fix1Center[0],fix3Center[0]);
-  cout << "Gripping Distance BD: " << gripDist << endl;
-    // Check CD
-  gripDist = sheet->getGripDistance(fix2Center[0],fix3Center[0]);
-  cout << "Gripping Distance CD: " << gripDist << endl;
+    // Shahwaz added on 1106 to check refine boundary conditions
+    double gripDist = 0;
+      // Check AB
+    gripDist = sheet->getGripDistance(fix0Center[0],fix1Center[0]);
+    cout << "Gripping Distance AB: " << gripDist << endl;
+      // Check AC
+    gripDist = sheet->getGripDistance(fix0Center[0],fix2Center[0]);
+    cout << "Gripping Distance AC: " << gripDist << endl;
+      // Check AD
+    gripDist = sheet->getGripDistance(fix0Center[0],fix3Center[0]);
+    cout << "Gripping Distance AD: " << gripDist << endl;
+      // Check BC
+    gripDist = sheet->getGripDistance(fix1Center[0],fix2Center[0]);
+    cout << "Gripping Distance BC: " << gripDist << endl;
+      // Check BD
+    gripDist = sheet->getGripDistance(fix1Center[0],fix3Center[0]);
+    cout << "Gripping Distance BD: " << gripDist << endl;
+      // Check CD
+    gripDist = sheet->getGripDistance(fix2Center[0],fix3Center[0]);
+    cout << "Gripping Distance CD: " << gripDist << endl;
+    cout << endl;
+
+    // ==================================================================//
+
+    clampPosition = sheet->getPositionVector(clamps[0][0],clamps[0][1],clamps[0][2],clamps[0][3]);
+    cout <<"Clamp A" << endl;
+    for (auto i:clampPosition)
+    {
+      cout <<"==========" << endl;
+      cout << i[0]<<endl;
+      cout << i[1]<<endl;
+      cout << i[2]<<endl;
+    }
+    cout << endl;  
+
+    clampPosition = sheet->getPositionVector(clamps[1][0],clamps[1][1],clamps[1][2],clamps[1][3]);
+    cout <<"Clamp B" << endl;
+    for (auto i:clampPosition)
+    {
+      cout <<"==========" << endl;
+      cout << i[0]<<endl;
+      cout << i[1]<<endl;
+      cout << i[2]<<endl;
+      
+    }
+    cout << endl;  
+
+    clampPosition = sheet->getPositionVector(clamps[2][0],clamps[2][1],clamps[2][2],clamps[2][3]);
+    cout <<"Clamp C" << endl;
+    for (auto i:clampPosition)
+    {
+      cout <<"==========" << endl;
+      cout << i[0]<<endl;
+      cout << i[1]<<endl;
+      cout << i[2]<<endl;
+    }
+
+    cout << endl;  
+
+    clampPosition = sheet->getPositionVector(clamps[3][0],clamps[3][1],clamps[3][2],clamps[3][3]);
+    cout <<"Clamp D" << endl;
+    for (auto i:clampPosition)
+    {
+      cout <<"==========" << endl;
+      cout << i[0]<<endl;
+      cout << i[1]<<endl;
+      cout << i[2]<<endl;
+    } 
+    
     
   for(int i=0; i<m_training_marker.size(); i++)
   {
@@ -695,6 +757,7 @@ void get_err(int fixNumber)
   // cout << "Vertex Id with max error:  " << vertexId<< endl;
   avg_err/= m_training_marker.size();
   fix_neighbor_err/= fix_tn_list.size();
+  cout <<"==========" << endl;
   cout << "avg_err:" << avg_err << endl;
   cout << "max_err:" << max_err << endl;
   cout << "fix_neighbor_err:" << fix_neighbor_err << endl;
@@ -730,15 +793,47 @@ void idleFunction(void)
   static int t30=15*sim_action_time_step;
   static int tinf=1000*sim_action_time_step;
 
+
+  clamps.push_back(fix0);
+  clamps.push_back(fix1);
+  clamps.push_back(fix2);
+  clamps.push_back(fix3);
+ 
+
+  if (timeStepCount == t1)
+  {
+    for (int a = 0; a < clamps.size(); a++)
+    {
+        if (a == 0){cout << "Clamp A" << endl;}
+        else if (a ==1) {cout << "Clamp B" << endl;}
+        else if (a ==2) {cout << "Clamp C" << endl;}
+        else cout << "Clamp D" << endl;
+        clampPosition = sheet->getPositionVector(clamps[a][0],clamps[a][1],clamps[a][2],clamps[a][3]);
+        for (auto i:clampPosition)
+        {
+
+          cout <<"==========" << endl;
+          cout << i[0]<<endl;
+          cout << i[1]<<endl;
+          cout << i[2]<<endl;
+
+        }
+        cout << endl;
+    }
+    
+  }
+
   if(timeStepCount==t3){
     get_err(0);
     cout << "Timesteps before error calc: " << t3 <<endl;
     cout << "------------------------------------"<< endl;
+    
   }
   else if(timeStepCount==t5){
     get_err(1);
     cout << "Timesteps before error calc: " << t5 <<endl;
     cout << "------------------------------------"<< endl;
+    
   }
   else if(timeStepCount==t7){
     get_err(2);
@@ -769,11 +864,7 @@ void idleFunction(void)
     sheet->MoveSurfaceTo3D(fix1,vec[0][1],dt,0);
     sheet->MoveSurfaceTo3D(fix2,vec[0][2],dt,0);
     sheet->MoveSurfaceTo3D(fix3,vec[0][3],dt,0);
-
-    // sheet->MoveSurfaceTo3D(fix0,vec[0][0],0,0);
-    // sheet->MoveSurfaceTo3D(fix1,vec[0][1],0,0);
-    // sheet->MoveSurfaceTo3D(fix2,vec[0][2],0,0);
-    // sheet->MoveSurfaceTo3D(fix3,vec[0][3],0,0);
+   
   }
   else if(timeStepCount<t4 && timeStepCount>=t3){
     sheet->MoveSurfaceTo3D(fix0,vec[1][0],dt,0);
@@ -806,6 +897,7 @@ void idleFunction(void)
   }
 
   sheet->finalizeAllConstraints();
+
   
 
   // if (timeStepCount % 100 ==0){
@@ -818,6 +910,7 @@ void idleFunction(void)
   // }
 
   deform = sheet->simulate(iterations);
+
   // cout<< "ITERATIONS::::::" << iterations << endl;
   // cout <<"iterations: "<<iterations<<endl;
   // sheet->getDeformInfo(max_deform, avg_deform);

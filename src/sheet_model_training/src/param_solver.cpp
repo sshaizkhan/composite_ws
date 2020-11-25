@@ -156,8 +156,8 @@ double Param_Solver::ErrFun(const std::vector<double> &x)
     // best values so far.. Shear: 888.214    Bend: 1.72827e+08
 
 
-    double shear= 7.04483e2;
-    double bend= 1.10711e8;
+    double shear= 2846.86;
+    double bend= 3.68391e07;
 
     // min_err: 0.0719615
     // best values so far.. Shear: 784.905    Bend: 1.33168e+08

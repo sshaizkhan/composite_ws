@@ -78,11 +78,11 @@ int main(int argc, char* argv[])
 
     std::vector<std::string> training_data(5);
 
-    training_data[0]= package_path+ "/data/T4/Txt_T4S1_Final.txt";
-    training_data[1]= package_path+ "/data/T4/Txt_T4S2_Final.txt";
-    training_data[2]= package_path+ "/data/T4/Txt_T4S3_Final.txt";
-    training_data[3]= package_path+ "/data/T4/Txt_T4S4_Final.txt";
-    training_data[4]= package_path+ "/data/T4/Txt_T4S5_Final.txt";
+    training_data[0]= package_path+ "/data/T2/Txt_T2S1_Final.txt";
+    training_data[1]= package_path+ "/data/T2/Txt_T2S2_Final.txt";
+    training_data[2]= package_path+ "/data/T2/Txt_T2S3_Final.txt";
+    training_data[3]= package_path+ "/data/T2/Txt_T2S4_Final.txt";
+    training_data[4]= package_path+ "/data/T2/Txt_T2S5_Final.txt";
 
     // training_data[0]= argv[11];  // use parse data here
     // training_data[1]= argv[12];
