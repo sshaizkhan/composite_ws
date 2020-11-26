@@ -73,27 +73,40 @@ int main(int argc, char* argv[])
 	std::string trainingpath;
     // std::vector<std::string> meshnames;
     meshnames.push_back(argv[3]);
+    meshnames.push_back(argv[6]);
 
     cout << "package path:" << package_path << endl;
 
-    std::vector<std::string> training_data(5);
+    std::vector<std::string> training_data(10);
 
-    training_data[0]= package_path+ "/data/T2/Txt_T2S1_Final.txt";
-    training_data[1]= package_path+ "/data/T2/Txt_T2S2_Final.txt";
-    training_data[2]= package_path+ "/data/T2/Txt_T2S3_Final.txt";
-    training_data[3]= package_path+ "/data/T2/Txt_T2S4_Final.txt";
-    training_data[4]= package_path+ "/data/T2/Txt_T2S5_Final.txt";
+    training_data[0]= package_path+ "/data/T1/Txt_T1S1_Final.txt";
+    training_data[1]= package_path+ "/data/T1/Txt_T1S2_Final.txt";
+    training_data[2]= package_path+ "/data/T1/Txt_T1S3_Final.txt";
+    training_data[3]= package_path+ "/data/T1/Txt_T1S4_Final.txt";
+    training_data[4]= package_path+ "/data/T1/Txt_T1S5_Final.txt";
+
+    training_data[5]= package_path+ "/data/T2/Txt_T2S1_Final.txt";
+    training_data[6]= package_path+ "/data/T2/Txt_T2S2_Final.txt";
+    training_data[7]= package_path+ "/data/T2/Txt_T2S3_Final.txt";
+    training_data[8]= package_path+ "/data/T2/Txt_T2S4_Final.txt";
+    training_data[9]= package_path+ "/data/T2/Txt_T2S5_Final.txt";
 
     // training_data[0]= argv[11];  // use parse data here
     // training_data[1]= argv[12];
     // training_data[2]= argv[13];
     // training_data[3]= argv[14];
     // training_data[4]= argv[15];
-    cout << "training_data 0:" << training_data[0] << endl;
-    cout << "training_data 1:" << training_data[1] << endl;
-    cout << "training_data 2:" << training_data[2] << endl;
-    cout << "training_data 3:" << training_data[3] << endl;
-    cout << "training_data 4:" << training_data[4] << endl;
+    cout << "training_data 1:" << training_data[0] << endl;
+    cout << "training_data 2:" << training_data[1] << endl;
+    cout << "training_data 3:" << training_data[2] << endl;
+    cout << "training_data 4:" << training_data[3] << endl;
+    cout << "training_data 5:" << training_data[4] << endl;
+
+    cout << "training_data 6:" << training_data[5] << endl;
+    cout << "training_data 7:" << training_data[6] << endl;
+    cout << "training_data 8:" << training_data[7] << endl;
+    cout << "training_data 9:" << training_data[8] << endl;
+    cout << "training_data 10:" << training_data[9] << endl;
  
 	
 ///////////////////////////////////////////////////////////////////////////////
