@@ -114,15 +114,15 @@ std::vector<double> vec_0 {0,0,0};
 
 
 
-// std::vector<int> fix0{11482,3511,12391,12390};  
-// std::vector<int> fix1{10215,2283,15410,16524};      
-// std::vector<int> fix2{7940,2050,15305,16228};    //T1_NewMeshTrial
-// std::vector<int> fix3{3954,11756,12207,12206}; 
+std::vector<int> fix0{11482,3511,12391,12390};  
+std::vector<int> fix1{10215,2283,15410,16524};      
+std::vector<int> fix2{7940,2050,15305,16228};    //T1_NewMeshTrial
+std::vector<int> fix3{3954,11756,12207,12206}; 
 
-std::vector<int> fix0{1507,11878,12398,12397};  
-std::vector<int> fix1{16598,15412,3147,11163};      
-std::vector<int> fix2{11914,11915,2904,10947};    //T2_NewMeshTrial
-std::vector<int> fix3{2424,12227,12226,10400};
+// std::vector<int> fix0{1507,11878,12398,12397};  
+// std::vector<int> fix1{16598,15412,3147,11163};      
+// std::vector<int> fix2{11914,11915,2904,10947};    //T2_NewMeshTrial
+// std::vector<int> fix3{2424,12227,12226,10400};
 
 // std::vector<int> fix0{2657,15541,16346,9154};  
 // std::vector<int> fix1{16524,15410,2283,10215};      
@@ -139,15 +139,15 @@ std::vector<int> fix3{2424,12227,12226,10400};
 // fixed point center vertex ids:
 // Shahwaz added on 1106
 
-// std::vector<int> fix0Center{15539};  
-// std::vector<int> fix1Center{12132};      
-// std::vector<int> fix2Center{11922};    //T1_fix centers
-// std::vector<int> fix3Center{15447};
+std::vector<int> fix0Center{15539};  
+std::vector<int> fix1Center{12132};      
+std::vector<int> fix2Center{11922};    //T1_fix centers
+std::vector<int> fix3Center{15447};
 
-std::vector<int> fix0Center{16347};  
-std::vector<int> fix1Center{12136};      
-std::vector<int> fix2Center{15301};    //T2_fix centers
-std::vector<int> fix3Center{15457};
+// std::vector<int> fix0Center{16347};  
+// std::vector<int> fix1Center{12136};      
+// std::vector<int> fix2Center{15301};    //T2_fix centers
+// std::vector<int> fix3Center{15457};
 
 
 // std::vector<int> fix0Center{12394};  
@@ -172,15 +172,15 @@ std::vector<std::vector<int>> fix_training_neighbors= {fix_tn0,fix_tn1,fix_tn2,f
 
 // ==========================================================//
 
-// Vec3d v3d_A0 = Vec3d(0.258900, 0, 1.041991);   
-// Vec3d v3d_B0 = Vec3d(-0.647545, 0, 1.169960);  //T1_NewMeshTrial
-// Vec3d v3d_C0 = Vec3d(-0.716100, 0, 0.191913); 
-// Vec3d v3d_D0 = Vec3d(0,0,0); 
-
-Vec3d v3d_A0 = Vec3d(0.198000, 0, 0.914022);   
-Vec3d v3d_B0 = Vec3d(-0.647508, 0, 1.169960);  //T2_NewMeshTrial
-Vec3d v3d_C0 = Vec3d(-0.777000, 0, 0.127929); 
+Vec3d v3d_A0 = Vec3d(0.258900, 0, 1.041991);   
+Vec3d v3d_B0 = Vec3d(-0.647545, 0, 1.169960);  //T1_NewMeshTrial
+Vec3d v3d_C0 = Vec3d(-0.716100, 0, 0.191913); 
 Vec3d v3d_D0 = Vec3d(0,0,0); 
+
+// Vec3d v3d_A0 = Vec3d(0.198000, 0, 0.914022);   
+// Vec3d v3d_B0 = Vec3d(-0.647508, 0, 1.169960);  //T2_NewMeshTrial
+// Vec3d v3d_C0 = Vec3d(-0.777000, 0, 0.127929); 
+// Vec3d v3d_D0 = Vec3d(0,0,0); 
 
 // Vec3d v3d_A0 = Vec3d(0.129500,0,0.978007);   
 // Vec3d v3d_B0 = Vec3d(-0.776945,0,1.169960);  //T3_NewMeshTrial2
@@ -194,23 +194,23 @@ Vec3d v3d_D0 = Vec3d(0,0,0);
 
 // ========================================================//
 
-// Vec3d v3d_A1 = Vec3d(0.103416,-0.001622,1.039259); 
-// Vec3d v3d_A2 = Vec3d(0.079567,0.110935,0.965506);  
-// Vec3d v3d_B1 = Vec3d(-0.802412,0.033388,1.054125);
-// Vec3d v3d_B2 = Vec3d(-0.784751,0.119161,0.995961); //  T1_NewMeshTrial
-// Vec3d v3d_C1 = Vec3d(-0.73471,0.0131175,0.083230); 
-// Vec3d v3d_C2 = Vec3d(-0.731668,0.1049795,0.089480); 
-// Vec3d v3d_D1 = Vec3d(0.0,0.0,0.0); 
-// Vec3d v3d_D2 = Vec3d(0.0,0.0,0.0); //Drop it
-
-Vec3d v3d_A1 = Vec3d(0.06288,-0.0036665,0.912126); 
-Vec3d v3d_A2 = Vec3d(0.050563,0.0675485,0.896538);  
-Vec3d v3d_B1 = Vec3d(-0.808377,-0.0010165,1.038368);
-Vec3d v3d_B2 = Vec3d(-0.787239,0.093844,0.99416); //  T2_NewMeshTrial
-Vec3d v3d_C1 = Vec3d(-0.767154,0.009518,0.003424); 
-Vec3d v3d_C2 = Vec3d(-0.71960,0.115937,0.010751); 
+Vec3d v3d_A1 = Vec3d(0.103416,-0.001622,1.039259); 
+Vec3d v3d_A2 = Vec3d(0.079567,0.110935,0.965506);  
+Vec3d v3d_B1 = Vec3d(-0.802412,0.033388,1.054125);
+Vec3d v3d_B2 = Vec3d(-0.784751,0.119161,0.995961); //  T1_NewMeshTrial
+Vec3d v3d_C1 = Vec3d(-0.73471,0.0131175,0.083230); 
+Vec3d v3d_C2 = Vec3d(-0.731668,0.1049795,0.089480); 
 Vec3d v3d_D1 = Vec3d(0.0,0.0,0.0); 
 Vec3d v3d_D2 = Vec3d(0.0,0.0,0.0); //Drop it
+
+// Vec3d v3d_A1 = Vec3d(0.06288,-0.0036665,0.912126); 
+// Vec3d v3d_A2 = Vec3d(0.050563,0.0675485,0.896538);  
+// Vec3d v3d_B1 = Vec3d(-0.808377,-0.0010165,1.038368);
+// Vec3d v3d_B2 = Vec3d(-0.787239,0.093844,0.99416); //  T2_NewMeshTrial
+// Vec3d v3d_C1 = Vec3d(-0.767154,0.009518,0.003424); 
+// Vec3d v3d_C2 = Vec3d(-0.71960,0.115937,0.010751); 
+// Vec3d v3d_D1 = Vec3d(0.0,0.0,0.0); 
+// Vec3d v3d_D2 = Vec3d(0.0,0.0,0.0); //Drop it
 
 // Vec3d v3d_A1 = Vec3d(0.03418,0.008986,0.967035); 
 // Vec3d v3d_A2 = Vec3d(-0.052287,0.0790045,0.924629);
@@ -526,17 +526,17 @@ void get_err(int fixNumber)
 
   std::vector<std::string> training_data(5);
 
-  // training_data[0]= "/home/shah/composite_ws/src/sheet_model_training/data/T1/Txt_T1S1_Final.txt";
-  // training_data[1]= "/home/shah/composite_ws/src/sheet_model_training/data/T1/Txt_T1S2_Final.txt";
-  // training_data[2]= "/home/shah/composite_ws/src/sheet_model_training/data/T1/Txt_T1S3_Final.txt";  //T1
-  // training_data[3]= "/home/shah/composite_ws/src/sheet_model_training/data/T1/Txt_T1S4_Final.txt";
-  // training_data[4]= "/home/shah/composite_ws/src/sheet_model_training/data/T1/Txt_T1S5_Final.txt";
+  training_data[0]= "/home/shah/composite_ws/src/sheet_model_training/data/T1/Txt_T1S1_Final.txt";
+  training_data[1]= "/home/shah/composite_ws/src/sheet_model_training/data/T1/Txt_T1S2_Final.txt";
+  training_data[2]= "/home/shah/composite_ws/src/sheet_model_training/data/T1/Txt_T1S3_Final.txt";  //T1
+  training_data[3]= "/home/shah/composite_ws/src/sheet_model_training/data/T1/Txt_T1S4_Final.txt";
+  training_data[4]= "/home/shah/composite_ws/src/sheet_model_training/data/T1/Txt_T1S5_Final.txt";
 
-  training_data[0]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S1_Final.txt";
-  training_data[1]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S2_Final.txt";
-  training_data[2]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S3_Final.txt";  //T2
-  training_data[3]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S4_Final.txt";
-  training_data[4]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S5_Final.txt";
+  // training_data[0]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S1_Final.txt";
+  // training_data[1]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S2_Final.txt";
+  // training_data[2]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S3_Final.txt";  //T2
+  // training_data[3]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S4_Final.txt";
+  // training_data[4]= "/home/shah/composite_ws/src/sheet_model_training/data/T2/Txt_T2S5_Final.txt";
 
 
   // training_data[0]= "/home/shah/composite_ws/src/sheet_model_training/data/T3/Txt_T3S1_Final.txt";
