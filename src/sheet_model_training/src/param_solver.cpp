@@ -109,8 +109,10 @@ Param_Solver::Param_Solver(nlopt::algorithm& Algo, const int& max_iter, const st
 double Param_Solver::ErrFun(const std::vector<double> &x)
 {
     // cout << "[Enter ERRFun]"<<endl;
-    double err;
+    double err1, err2;
     double total_err=0;
+    double total_err1=0;
+    double total_err2=0;
     // double min_err;
     // cout << min_err << endl;
     double max_err;
@@ -197,14 +199,16 @@ double Param_Solver::ErrFun(const std::vector<double> &x)
     // }
 
     // for(int i=0; i<objmeshname.size();i++)
-    for(int i=0; i<Training_data_file.size();i++)
+    for(int i=0; i<Training_data_file.size()-5;i++)
     {
         fix= i;
         if(alg_type == nlopt::LD_LBFGS){
-            err = sheet->solve_err_with_constraints(objmeshname[0].data(),Training_data_file[i].data(),temp,fix,1,Simulation_time);
+            err1 = sheet->solve_err_with_constraints1(objmeshname[0].data(),Training_data_file[i].data(),temp,fix,1,Simulation_time);
+            err2 = sheet->solve_err_with_constraints2(objmeshname[1].data(),Training_data_file[i+5].data(),temp,fix,1,Simulation_time);
         }
         else{
-            err = sheet->solve_err_with_constraints(objmeshname[0].data(),Training_data_file[i].data(),temp,fix,1,Simulation_time);
+            err1 = sheet->solve_err_with_constraints1(objmeshname[0].data(),Training_data_file[i].data(),temp,fix,1,Simulation_time);
+            err2 = sheet->solve_err_with_constraints2(objmeshname[1].data(),Training_data_file[i+5].data(),temp,fix,1,Simulation_time);
             // err = sheet->solve_err_with_constraints(objmeshname[i].data(),Training_data_file[i].data(),x,fix,1,Simulation_time);
         }
         // cout << err << endl;
@@ -212,17 +216,23 @@ double Param_Solver::ErrFun(const std::vector<double> &x)
             // if(err>max)
             //     max = err;
         if(sheet->getElasticEnergy() > 10){
-            err*=100;
-            cout << "ELASTIC ENERGY!!!!!!!!!!!!!!!!! Too high, multiply error by 100:"<< err <<endl;
+            err1*=100;
+            err2*=100;
+            cout << "ELASTIC ENERGY for Sheet 1!!!!!!!!!!!!!!!!! Too high, multiply error by 100:"<< err1 <<endl;
+            cout << "ELASTIC ENERGY for Sheet 2!!!!!!!!!!!!!!!!! Too high, multiply error by 100:"<< err2 <<endl;
         }
         else {
             // cout << "Elastic Energy is good! Err:  "<< err <<endl;  
         }
-         cout << "#"<< i+1<<" err:"<< err <<endl;
-         total_err+=err;
+         cout << "#"<< i+1<<" err1:"<< err1 <<endl;
+         cout << "#"<< i+1<<" err2:"<< err2 <<endl;
+         total_err1+=err1;
+         total_err2+=err2;
     }
-    total_err/=Training_data_file.size();
-    std::cout << "total_err: "<<total_err<<std::endl;
+    total_err1/=Training_data_file.size()-5;
+    total_err2/=Training_data_file.size()-5;
+    std::cout << "total_err1: "<<total_err1<<std::endl;
+    std::cout << "total_err2: "<<total_err2<<std::endl;
 
 
 
@@ -243,9 +253,9 @@ double Param_Solver::ErrFun(const std::vector<double> &x)
 
 
 
-    if(min_err>total_err){
+    if(min_err >  total_err1 || min_err > total_err2){
          cout << "Updating MIN Error and SolX" << endl;
-         min_err = total_err; 
+         min_err = std::min(total_err1, total_err2); 
          // alecx=temp; 
          alecx[0]=temp[0];
          alecx[1]=temp[1];     
@@ -267,6 +277,7 @@ double Param_Solver::ErrFun(const std::vector<double> &x)
     
     // delete sheet;
     // sheet->setTimeStep(sheet_timestep);
+    total_err = std::max(total_err1, total_err2);
     return total_err;
 }
 
