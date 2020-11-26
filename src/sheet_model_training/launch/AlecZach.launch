@@ -4,7 +4,8 @@
 <!-- ///////////////////User Input////////////////////////// -->
 <arg name="configFilename" value="sheet_tracking_FEM.config"/>
 <arg name="lightingFile" value="cloth.lighting"/>
-<arg name="meshFilename" value="NewMeshT2_129_129.obj"/>
+<arg name="meshFilename" value="NewMeshT1_129_129.obj"/>
+<arg name="meshFilename2" value="NewMeshT2_129_129.obj"/>
 <!-- <arg name="dataFilename" value="grip5_5.csv"/> -->
 <arg name="dataFilename" value=" "/>
 <!-- <arg name="compareFilename" value="boeing/rot_shift_new_center_grip5_curve_5.csv"/> -->
@@ -13,6 +14,7 @@
 <arg name="configFilePath" value="$(find composite_simulator)/config/$(arg configFilename)"/>
 <arg name="lightingFilePath" value="$(find composite_simulator)/lighting/$(arg lightingFile)"/>
 <arg name="meshFilePath" value="$(find sheet_model_training)/mesh/$(arg meshFilename)"/>
+<arg name="meshFilePath2" value="$(find sheet_model_training)/mesh/$(arg meshFilename2)"/>
 <arg name="dataFilePath" value="$(find sheet_model_training)/data/$(arg dataFilename)"/>
 <arg name="compareFilePath" value="$(find sheet_model_training)/data/$(arg compareFilename)"/>
 <!-- <arg name="Trial1" value="$(find sheet_model_training)/data/T1S1.txt"/> -->
@@ -21,7 +23,7 @@
 <!-- <arg name="Trial4" value="$(find sheet_model_training)/data/T1S4.txt"/> -->
 <!-- <arg name="Trial5" value="$(find sheet_model_training)/data/T1S5.txt"/> -->
 
-<node name="interface" pkg="sheet_model_training" type="interface" args="$(arg configFilePath) $(arg lightingFilePath) $(arg meshFilePath) $(arg dataFilePath) $(arg compareFilePath)" output="screen"/>
+<node name="interface" pkg="sheet_model_training" type="interface" args="$(arg configFilePath) $(arg lightingFilePath) $(arg meshFilePath) $(arg dataFilePath) $(arg compareFilePath) $(arg meshFilePath2)" output="screen"/>
 
 
 
