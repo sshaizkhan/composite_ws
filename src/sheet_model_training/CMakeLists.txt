@@ -279,7 +279,7 @@ target_link_libraries(simulator_test_clean composite_training_interface ${catkin
 
 # add_executable(simulator_constraint_test src/simulator_constraint_test.cpp)
 # target_link_libraries(simulator_constraint_test  ${catkin_LIBRARIES} composite_training_interface ${TBB_LIBRARIES} ${PARDISO_LIBRARIES} ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} ${GLUI_LIB} ${GLUI_LIBRARIES} ${LD_LIBRARY_PATH})
-add_executable(AlecZach src/AlecZach)
+add_executable(AlecZach src/AlecZach.cpp)
 target_link_libraries(AlecZach composite_training_interface ${catkin_LIBRARIES} ${GLUI_LIB} ${GLUI_LIBRARIES} ${LD_LIBRARY_PATH})
 
 
