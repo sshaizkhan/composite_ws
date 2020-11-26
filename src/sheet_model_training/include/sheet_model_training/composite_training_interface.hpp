@@ -29,7 +29,9 @@ public:
     // void generateSheetBW();
     // double solve_err(const char* objMeshname,const char* training_data,const std::vector<double>& param,const int& time=100);
     virtual void updateSheetStatus(const char* objMeshname, const char* training_data, const std::vector<double>& param, const int& fixNum = 4, bool is_permanent=false);
-    double solve_err_with_constraints(const char* objMeshname,const char* training_data,const std::vector<double>& param, const int& fixNum = 4,  bool is_permanent=false,const int& time=100);
+    // virtual void updateSheetStatus2(const char* objMeshname, const char* training_data, const std::vector<double>& param, const int& fixNum = 4, bool is_permanent=false);
+    double solve_err_with_constraints1(const char* objMeshname,const char* training_data,const std::vector<double>& param, const int& fixNum = 4,  bool is_permanent=false,const int& time=100);
+    double solve_err_with_constraints2(const char* objMeshname,const char* training_data,const std::vector<double>& param, const int& fixNum = 4,  bool is_permanent=false,const int& time=100);
     //show_err		err_type 0 for average err, 1 for weighted_err, 2 for std_err, 3 for maximum err, 4 for min_err
     //Error is defined as 0.5*offset + 0.5* maximum offset
     //Need to be used after solve_err() 
