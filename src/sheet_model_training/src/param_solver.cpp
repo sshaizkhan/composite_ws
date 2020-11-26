@@ -224,6 +224,7 @@ double Param_Solver::ErrFun(const std::vector<double> &x)
         else {
             // cout << "Elastic Energy is good! Err:  "<< err <<endl;  
         }
+         cout << "====================" << endl;
          cout << "#"<< i+1<<" err1:"<< err1 <<endl;
          cout << "#"<< i+1<<" err2:"<< err2 <<endl;
          total_err1+=err1;
