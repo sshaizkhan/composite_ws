@@ -46,7 +46,7 @@ using namespace std;
 // }
   void Composite_Training::loadMesh(const char* objMeshname, const char* training_data, const int& fixNum, const double& scale){
     //ALEC updated 070320 to only update mesh first time (fixNum=0)
-    if(fixNum >= 0){
+    if(fixNum == 0){
        if (m_objMesh != NULL)  
            delete m_objMesh;
          cout << "Loaded mesh: " << objMeshname << endl;
