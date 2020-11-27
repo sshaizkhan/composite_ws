@@ -85,7 +85,7 @@ Param_Solver::Param_Solver(nlopt::algorithm& Algo, const int& max_iter, const st
 
 // 	// for(int i=0; i<RealdataFile.size();i++)
 // 	// {
-// 	// 	err = sheet->solve_err(objmeshname,FixptsFile,RealdataFile[i].data(),x,Simulation_time);
+// 	// 	err = sheet->solve_err(objMeshName,FixptsFile,RealdataFile[i].data(),x,Simulation_time);
 //  //        if(max<err)
 //  //            max = err;
 // 	// 	// cout << "#"<< i+1<<" err:"<< err<<endl;
@@ -185,11 +185,11 @@ double Param_Solver::ErrFun(const std::vector<double> &x)
     temp[2]= dampingStiffness;
 
     // if(alg_type == nlopt::LD_LBFGS){
-    //     err = sheet->solve_err_with_constraints(objmeshname[i].data(),Training_data_file[i].data(),temp,fix,1,Simulation_time);
+    //     err = sheet->solve_err_with_constraints(objMeshName[i].data(),Training_data_file[i].data(),temp,fix,1,Simulation_time);
     // }
     // else{
-    //     err = sheet->solve_err_with_constraints(objmeshname[i].data(),Training_data_file[i].data(),temp,fix,1,Simulation_time);
-    //     // err = sheet->solve_err_with_constraints(objmeshname[i].data(),Training_data_file[i].data(),x,fix,1,Simulation_time);
+    //     err = sheet->solve_err_with_constraints(objMeshName[i].data(),Training_data_file[i].data(),temp,fix,1,Simulation_time);
+    //     // err = sheet->solve_err_with_constraints(objMeshName[i].data(),Training_data_file[i].data(),x,fix,1,Simulation_time);
     // }
     //  sheet->getParameters();
     //  if(sheet->getElasticEnergy() > 10){}
@@ -197,42 +197,50 @@ double Param_Solver::ErrFun(const std::vector<double> &x)
     //  cout << "#"<< i+1<<" err:"<< err<<endl;
     //  total_err+=err;
     // }
-
-    for(int i=0; i<objmeshname.size();i++)
-    {    
-        for(int j=i*5; j<Training_data_file.size() ;j++)
-        {
-            do {
-                if(alg_type == nlopt::LD_LBFGS){
-                    err = sheet->solve_err_with_constraints1(objmeshname[i].data(),Training_data_file[j].data(),temp,j,1,Simulation_time);
-                    // err2 = sheet->solve_err_with_constraints2(objmeshname[1].data(),Training_data_file[i+5].data(),temp,fix,1,Simulation_time);
-                }
-                else{
-                    err = sheet->solve_err_with_constraints1(objmeshname[i].data(),Training_data_file[j].data(),temp,j,1,Simulation_time);
-                    // err2 = sheet->solve_err_with_constraints2(objmeshname[1].data(),Training_data_file[i+5].data(),temp,fix,1,Simulation_time);
-                    // err = sheet->solve_err_with_constraints(objmeshname[i].data(),Training_data_file[i].data(),x,fix,1,Simulation_time);
-                }
-                // cout << err << endl;
-                // sheet->getParameters();
-                    // if(err>max)
-                    //     max = err;
-                if(sheet->getElasticEnergy() > 10){            
-                    err*=100;
-                    // err2*=100;
-                    cout << "ELASTIC ENERGY for Sheet 1!!!!!!!!!!!!!!!!! Too high, multiply error by 100:"<< err <<endl;
-                    // cout << "ELASTIC ENERGY for Sheet 2!!!!!!!!!!!!!!!!! Too high, multiply error by 100:"<< err2 <<endl;
-                }
-                else {
-                    // cout << "Elastic Energy is good! Err:  "<< err <<endl;  
-                }
-                 cout << "====================" << endl;
-                 cout << "#"<< i+1<<" err:"<< err <<endl;
-                 // cout << "#"<< i+1<<" err2:"<< err2 <<endl;
-                 total_err+=err;
-                 // total_err2+=err2;
-            } while (j <=4)
-        }    
-    }    
+    std::vector<int> counter {0,1,2,3,4,0,1,2,3,4};
+    int setSize = Training_data_file.size()/objmeshname.size();
+    int i = 0;   
+    for(int j=i*setSize; j<(i+2)*setSize;j++)
+    {
+        if(alg_type == nlopt::LD_LBFGS){
+            if (j < 5)
+            {
+                err = sheet->solve_err_with_constraints1(objmeshname[i].data(),Training_data_file[j].data(),temp,counter[j],1,Simulation_time);
+            }
+            else
+            {    
+                err = sheet->solve_err_with_constraints2(objmeshname[i+1].data(),Training_data_file[j].data(),temp,counter[j],1,Simulation_time);
+            }    
+        }
+        else{
+            if (j < 5)
+            {
+                err = sheet->solve_err_with_constraints1(objmeshname[i].data(),Training_data_file[j].data(),temp,counter[j],1,Simulation_time);
+            }
+            else
+            {    
+                err = sheet->solve_err_with_constraints2(objmeshname[i+1].data(),Training_data_file[j].data(),temp,counter[j],1,Simulation_time);
+            }    
+        }
+        // cout << err << endl; 
+        // sheet->getParameters();
+            // if(err>max)
+            //     max = err;
+        if(sheet->getElasticEnergy() > 10){
+            err*=100;
+            // err2*=100;
+            cout << "ELASTIC ENERGY for Sheet 1!!!!!!!!!!!!!!!!! Too high, multiply error by 100:"<< err <<endl;
+            // cout << "ELASTIC ENERGY for Sheet 2!!!!!!!!!!!!!!!!! Too high, multiply error by 100:"<< err2 <<endl;
+        }
+        else {
+            // cout << "Elastic Energy is good! Err:  "<< err <<endl;
+        }
+         cout << "====================" << endl;
+         cout << "#"<< i+1<<" err:"<< err <<endl;
+         // cout << "#"<< i+1<<" err2:"<< err2 <<endl;
+         total_err+=err;
+         // total_err2+=err2
+    }        
     total_err/=Training_data_file.size();
     // total_err2/=Training_data_file.size()-5;
     std::cout << "total_err: "<<total_err<<std::endl;
