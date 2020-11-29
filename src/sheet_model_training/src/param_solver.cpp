@@ -158,8 +158,8 @@ double Param_Solver::ErrFun(const std::vector<double> &x)
     // best values so far.. Shear: 888.214    Bend: 1.72827e+08
 
 
-    double shear= 2846.86;
-    double bend= 3.68391e07;
+    double shear= 2016.7;
+    double bend= 4.61763e07;
 
     // min_err: 0.0719615
     // best values so far.. Shear: 784.905    Bend: 1.33168e+08
@@ -197,7 +197,6 @@ double Param_Solver::ErrFun(const std::vector<double> &x)
     //  cout << "#"<< i+1<<" err:"<< err<<endl;
     //  total_err+=err;
     // }
-    std::vector<int> counter {0,1,2,3,4,0,1,2,3,4};
     int setSize = Training_data_file.size()/objmeshname.size();
     int i = 0;   
     for(int j=i*setSize; j<(i+2)*setSize;j++)
@@ -205,21 +204,21 @@ double Param_Solver::ErrFun(const std::vector<double> &x)
         if(alg_type == nlopt::LD_LBFGS){
             if (j < 5)
             {
-                err = sheet->solve_err_with_constraints1(objmeshname[i].data(),Training_data_file[j].data(),temp,counter[j],1,Simulation_time);
+                err = sheet->solve_err_with_constraints1(objmeshname[i].data(),Training_data_file[j].data(),temp,j,1,Simulation_time);
             }
             else
             {    
-                err = sheet->solve_err_with_constraints2(objmeshname[i+1].data(),Training_data_file[j].data(),temp,counter[j],1,Simulation_time);
+                err = sheet->solve_err_with_constraints2(objmeshname[i+1].data(),Training_data_file[j].data(),temp,j-5,1,Simulation_time);
             }    
         }
         else{
             if (j < 5)
             {
-                err = sheet->solve_err_with_constraints1(objmeshname[i].data(),Training_data_file[j].data(),temp,counter[j],1,Simulation_time);
+                err = sheet->solve_err_with_constraints1(objmeshname[i].data(),Training_data_file[j].data(),temp,j,1,Simulation_time);
             }
             else
             {    
-                err = sheet->solve_err_with_constraints2(objmeshname[i+1].data(),Training_data_file[j].data(),temp,counter[j],1,Simulation_time);
+                err = sheet->solve_err_with_constraints2(objmeshname[i+1].data(),Training_data_file[j].data(),temp,j-5,1,Simulation_time);
             }    
         }
         // cout << err << endl; 
@@ -236,10 +235,8 @@ double Param_Solver::ErrFun(const std::vector<double> &x)
             // cout << "Elastic Energy is good! Err:  "<< err <<endl;
         }
          cout << "====================" << endl;
-         cout << "#"<< i+1<<" err:"<< err <<endl;
-         // cout << "#"<< i+1<<" err2:"<< err2 <<endl;
+         cout << "#"<< j+1<<" err:"<< err <<endl;
          total_err+=err;
-         // total_err2+=err2
     }        
     total_err/=Training_data_file.size();
     // total_err2/=Training_data_file.size()-5;
