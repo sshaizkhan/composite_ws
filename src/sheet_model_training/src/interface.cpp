@@ -79,17 +79,17 @@ int main(int argc, char* argv[])
 
     std::vector<std::string> training_data(10);
 
-    training_data[0]= package_path+ "/data/T1/Txt_T1S1_Final.txt";
-    training_data[1]= package_path+ "/data/T1/Txt_T1S2_Final.txt";
-    training_data[2]= package_path+ "/data/T1/Txt_T1S3_Final.txt";
-    training_data[3]= package_path+ "/data/T1/Txt_T1S4_Final.txt";
-    training_data[4]= package_path+ "/data/T1/Txt_T1S5_Final.txt";
+    training_data[0]= package_path+ "/data/T2/Txt_T2S1_Final.txt";
+    training_data[1]= package_path+ "/data/T2/Txt_T2S2_Final.txt";
+    training_data[2]= package_path+ "/data/T2/Txt_T2S3_Final.txt";
+    training_data[3]= package_path+ "/data/T2/Txt_T2S4_Final.txt";
+    training_data[4]= package_path+ "/data/T2/Txt_T2S5_Final.txt";
 
-    training_data[5]= package_path+ "/data/T2/Txt_T2S1_Final.txt";
-    training_data[6]= package_path+ "/data/T2/Txt_T2S2_Final.txt";
-    training_data[7]= package_path+ "/data/T2/Txt_T2S3_Final.txt";
-    training_data[8]= package_path+ "/data/T2/Txt_T2S4_Final.txt";
-    training_data[9]= package_path+ "/data/T2/Txt_T2S5_Final.txt";
+    training_data[5]= package_path+ "/data/T3/Txt_T3S1_Final.txt";
+    training_data[6]= package_path+ "/data/T3/Txt_T3S2_Final.txt";
+    training_data[7]= package_path+ "/data/T3/Txt_T3S3_Final.txt";
+    training_data[8]= package_path+ "/data/T3/Txt_T3S4_Final.txt";
+    training_data[9]= package_path+ "/data/T3/Txt_T3S5_Final.txt";
 
     // training_data[0]= argv[11];  // use parse data here
     // training_data[1]= argv[12];
