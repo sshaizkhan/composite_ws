@@ -1,4 +1,4 @@
-# sheet_simulator
+# Composite Sheet Simulator
 ROS package for composite sheet simulation<br><br>  
 + Maintainer: Yi-Wei(Mike), Chen | Shahwaz Khan
 + Email: mike1393@gmail.com | shahwazk@usc.edu
